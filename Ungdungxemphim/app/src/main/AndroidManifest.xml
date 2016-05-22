@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hongoctuan.admin.ungdungxemphim">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MovieDetail" />
+        <!-- <activity android:name=".CommentCustomList" /> -->
+        <activity android:name=".View.WatchMovieBUS" />
+        <!-- <activity android:name=".RelatedMovieCustomList"></activity> -->
+        <activity android:name=".View.TypeMovie" />
+        <activity android:name=".View.ForgetPassWord" />
+        <activity android:name=".View.ChangePassword" />
+        <activity android:name=".View.Introduce" />
+        <activity android:name=".View.Contact" />
+        <activity android:name=".View.Question" />
+        <activity android:name=".View.ChangeInfor" />
+        <activity android:name=".View.NewsAndGift" />
+        <activity android:name=".View.Detail_NewsAndGift"></activity>
+    </application>
+
+</manifest>
