@@ -122,7 +122,7 @@ public class Data {
         return sql;
     }
     public String createDataMovie9(){
-        String sql = "INSERT INTO \"phim\" VALUES('hh04','KungFu Panda 2','Jennifer Yuh ','Jack Black, Angelina Jolie, Dustin Hoffman, Gary Oldman, Jackie Chan, Seth Rogen, Lucy Liu, David Cross, James Hong, Michelle Yeoh, Danny McBride, Dennis Haysbert, Jean-Claude Van Jack Black, Angelina Jolie','4','Trong Kung Fu Panda 2, cuộc sống mới của anh chàng gấu trúc Po nay đã là Thần Long Đại Hiệp là phải bảo vệ thung lũng Hòa Bình cùng với bạn bè cùng nhóm Ngũ đại hào kiệt gồm Đại sư tỷ Tigress, Sư huynh Crane, Sư huynh Mantis, Sư tỷ Viper và Sư huynh Monkey','hh','TIA6KNfpRqs');";
+        String sql = "INSERT INTO \"phim\" VALUES('hh04','KungFu Panda 2','Jennifer Yuh ','Jack Black, Angelina Jolie, Dustin Hoffman, Gary Oldman, Jackie Chan, Seth Rogen, Lucy Liu, David Cross, James Hong, Michelle Yeoh, Danny McBride, Dennis Haysbert, Jean-Claude Van Jack Black, Angelina Jolie','4','Trong Kung Fu Panda 2, cuộc sống mới của anh chàng gấu trúc Po nay đã là Thần Long Đại Hiệp là phải bảo vệ thung lũng Hòa Bình cùng với bạn bè cùng nhóm Ngũ đại hào kiệt gồm Đại sư tỷ Tigress, Sư huynh Crane, Sư huynh Mantis, Sư tỷ Viper và Sư huynh Monkey','hh','YIW5oo-8NYw');";
         return sql;
     }
     public String createDataMovie10(){
@@ -130,32 +130,86 @@ public class Data {
         return sql;
     }
     public String createDataMovie11(){
-        String sql = "INSERT INTO \"phim\" VALUES('gt01','Transformers(2007)','Michael Bay','Shia LaBeouf, Megan Fox, Josh Duhamel','4','Trong một tương lai gần, Trái đất tình cờ bị cuốn vào một cuộc chiến liên hành tinh giữa hai chủng tộc Người máy với những vũ khí hủy diệt khủng khiếp mà một trong hai chủng tộc đó có khả năng biến hình đa dạng','gt','gAjgXlvVexI');";
+        String sql = "INSERT INTO \"phim\" VALUES('gt01','Transformers 1','Michael Bay','Shia LaBeouf, Megan Fox, Josh Duhamel','4','Trong một tương lai gần, Trái đất tình cờ bị cuốn vào một cuộc chiến liên hành tinh giữa hai chủng tộc Người máy với những vũ khí hủy diệt khủng khiếp mà một trong hai chủng tộc đó có khả năng biến hình đa dạng','gt','gAjgXlvVexI');";
         return sql;
     }
     public String createDataMovie12(){
-        String sql = "INSERT INTO \"phim\" VALUES('gt02','Transformers 2009','Michael Bay','Shia LaBeouf, Megan Fox, Josh Duhamel','4',' Quân Deceptico đã trở lại Trái Đất với mục tiêu đuổi bắt Sam Witwicky, sau khi người anh hùng trẻ tuổi này vô tình biết được bí mật về Người Máy Biến Hình và lịch sử cổ xưa của họ. Với sứ mệnh bảo vệ loài người, thủ lĩnh Optimus Prime lập nên liên minh quân đội quốc tế để sẵn sàng cho cuộc chiến oanh liệt lần thứ 2.','gt','uH3STHC63hU');";
+        String sql = "INSERT INTO \"phim\" VALUES('gt02','Transformers 2','Michael Bay','Shia LaBeouf, Megan Fox, Josh Duhamel','4',' Quân Deceptico đã trở lại Trái Đất với mục tiêu đuổi bắt Sam Witwicky, sau khi người anh hùng trẻ tuổi này vô tình biết được bí mật về Người Máy Biến Hình và lịch sử cổ xưa của họ. Với sứ mệnh bảo vệ loài người, thủ lĩnh Optimus Prime lập nên liên minh quân đội quốc tế để sẵn sàng cho cuộc chiến oanh liệt lần thứ 2.','gt','uH3STHC63hU');";
         return sql;
     }
     public String createDataMovie13(){
-        String sql = "INSERT INTO \"phim\" VALUES('gt03','Transformers 2011','Michael Bay','Shia LaBeouf, Josh Duhamel, John Turturro, Tyrese Gibson, Rosie Huntington Whiteley, Patrick Dempsey, Rich Hutchman, Frances McDormand, Kevin Dunn, John Malkovic','5','Bối cảnh phim diễn ra ở Trái đất với nội dung ngoài yếu tố hấp dẫn, hài hước thì phần 3 được bật mí sẽ cực kì bí ẩn. Phe Autobots gồm Bumblebee, Ratchet, Ironhide và Sideswipe do Optimus Prime lãnh đạo sẽ trở lại và đối đầu với phe Decepticons xấu xa, những kẻ quyết tâm trả thù cho thất bại của chúng. ','gt','kHRf01Gjosk');";
+        String sql = "INSERT INTO \"phim\" VALUES('gt03','Transformers 3','Michael Bay','Shia LaBeouf, Josh Duhamel, John Turturro, Tyrese Gibson, Rosie Huntington Whiteley, Patrick Dempsey, Rich Hutchman, Frances McDormand, Kevin Dunn, John Malkovic','5','Bối cảnh phim diễn ra ở Trái đất với nội dung ngoài yếu tố hấp dẫn, hài hước thì phần 3 được bật mí sẽ cực kì bí ẩn. Phe Autobots gồm Bumblebee, Ratchet, Ironhide và Sideswipe do Optimus Prime lãnh đạo sẽ trở lại và đối đầu với phe Decepticons xấu xa, những kẻ quyết tâm trả thù cho thất bại của chúng. ','gt','kHRf01Gjosk');";
         return sql;
     }
     public String createDataMovie14(){
-        String sql = "INSERT INTO \"phim\" VALUES('gt04','Transformers 2011','Michael Bay','Mark Wahlberg, Nicola Peltz, Jack Reynor','5','TRANSFORMERS 4 được bắt đầu sau 4 năm về trận chiến ở Los Angeles trong phần trước Transformers: Dark of the Moon. Câu chuyện mở màn bởi những lời đồn đại về một thợ cơ khí và con gái của ông ta đã phát hiện ra một bí mật có thể khiến cả Autobots, Decepticons, và chính phủ Hoa Kỳ bị đe dọa.','gt','r8HPIH5JCak');";
+        String sql = "INSERT INTO \"phim\" VALUES('gt04','Transformers 4','Michael Bay','Mark Wahlberg, Nicola Peltz, Jack Reynor','5','TRANSFORMERS 4 được bắt đầu sau 4 năm về trận chiến ở Los Angeles trong phần trước Transformers: Dark of the Moon. Câu chuyện mở màn bởi những lời đồn đại về một thợ cơ khí và con gái của ông ta đã phát hiện ra một bí mật có thể khiến cả Autobots, Decepticons, và chính phủ Hoa Kỳ bị đe dọa.','gt','r8HPIH5JCak');";
         return sql;
     }
     public String createDataMovie15(){
-        String sql = "INSERT INTO \"phim\" VALUES('gt05','Transformers 2016','Michael Bay','Đang cập nhật','5','Với sự xuất hiện của kẻ thù mới, một trong những chủng tộc người ngoài hành tinh nhắm đến Trái Đất vì một mục đích là nguồn tài nguyên. Nhiệm vụ khó khăn hơn với nhóm Autobot là phải chiến đấu bảo vệ ngôi nhà thứ hai  của mình.','gt','GkKGM-dKNek');\n";
+        String sql = "INSERT INTO \"phim\" VALUES('gt05','Transformers 5','Michael Bay','Đang cập nhật','5','Với sự xuất hiện của kẻ thù mới, một trong những chủng tộc người ngoài hành tinh nhắm đến Trái Đất vì một mục đích là nguồn tài nguyên. Nhiệm vụ khó khăn hơn với nhóm Autobot là phải chiến đấu bảo vệ ngôi nhà thứ hai  của mình.','gt','GkKGM-dKNek');";
         return sql;
     }
-
-
-
-
-
-
-
-
+    public String createDataMovie16(){
+        String sql = "INSERT INTO \"phim\" VALUES('hd06','Cung sư huyền thoại','Haofeng Xu','Vu Thừa Huệ, Tống Dương, Lý Trình Viện','5','Thời thiếu niên Song Hỷ đã chính mắt nhìn thấy tỉ tỉ của mình gặp nạn, trong lòng Song Hỷ luôn bị ám ảnh bởi ký ức này. Bất ngờ Song Hỷ được thừa kế tiễn thuật cao siêu và trở thành một cao thủ trong võ lâm, với tên gọi Liễu Bạch Viên','hd','SC6njN8AG6g');";
+        return sql;
+    }
+    public String createDataMovie17(){
+        String sql = "INSERT INTO \"phim\" VALUES('hd07','Sniper:Special Ops 2016','Fred Olen Ray','Steven Seagal, Rob Van Dam, Tim Abell','5','Một lực lượng đặc biệt được chỉ huy bởi Trung Sĩ Jake Chandler, được cử đến đến một ngôi làng hẻo lánh ở Afghan để giải cứu một đại biểu quốc hội Hoa kì đang bị giữ bởi phiến quân Taliban. ','hd','1_Rmj_rtWlo');";
+        return sql;
+    }
+    public String createDataMovie18(){
+        String sql = "INSERT INTO \"phim\" VALUES('hd08','Winters War(2016)','Cedric Nicolas-Troyan','Chris Hemsworth, Jessica Chastain, Charlize Theron','5','Câu chuyện bắt đầu với Freya - em gái của Nữ hoàng ác Ravenna là Nữ hoàng băng giá, có năng lực đóng băng bất kỳ kẻ thù nào.','hd','POs2lEv7_6U');";
+        return sql;
+    }
+    public String createDataMovie19(){
+        String sql = "INSERT INTO \"phim\" VALUES('hd09','The Finest Hours','Craig Gillespie','Chris Pine, Casey Affleck, Ben Foster','5','Bộ phim mang chúng ta trở về ngày 18 tháng 2 năm 1952, một thảm họa thiên nhiên bất ngờ đã xảy ra trên vùng biển phía Đông nước Mỹ khiến tàu chở dầu lớn bị nứt làm đôi và đe dọa mạng sống của tất cả các thủy thủ.','hd','0jLXw5DqTbQ');";
+        return sql;
+    }
+    public String createDataMovie20(){
+//        String sql = "INSERT INTO \"phim\" VALUES('hd10','Dawn of Justice','Zack Snyder','Ben Affleck, Henry Cavill, Amy Adams','5','Ben Affleck, Henry Cavill, Amy Adams','hd','Zmu70sS4C34');";
+//        return sql;
+        String sql = "INSERT INTO \"phim\" VALUES('hd10','Dawn of Justice','Zack Snyder','Ben Affleck, Henry Cavill, Amy Adams','5','Nội dung bộ phim sẽ xoay quanh cuộc đối đầu có 1-0-2 của vị hiệp sĩ mạnh mẽ, đáng gờm nhất của thành phố Gotham với biểu tượng được tôn sùng nhất của thành phố Metropolis...','hd','0jLXw5DqTbQ');";
+        return sql;
+    }
+    public String createDataMovie21(){
+        String sql = "INSERT INTO \"phim\" VALUES('hh06','Justice League...','Sam Liu','Rosario Dawson, Christopher Gorham, Shemar Moore','5','Trong phim thì Justice League bị Trigon (bố của Raven) điều khiển và chỉ còn những người hùng trẻ tuổi của nhóm Teen Titans có thể ngăn chặn họ.','hh','HmLdaXERgZA');";
+        return sql;
+    }
+    public String createDataMovie22(){
+        String sql = "INSERT INTO \"phim\" VALUES('hh07','The Great Egg Scapade','Ricardo Curtis','Blake Anderson, Tyree Brown, David Cowgill','5','Ice Age The Great Egg-Scape là bản đặc biệt nhân dịp kỷ niệm lễ Phục Sinh từ đài FOX, bộ phim chia làm 3 phần. Phần đầu là câu chuyện tìm những quả trứng bị giấu bởi một tên thỏ cướp biển đáng ghét.','hh','37R0UXkisww');";
+        return sql;
+    }
+    public String createDataMovie23(){
+        String sql = "INSERT INTO \"phim\" VALUES('hh08','Capture the Flag','Enrique Gato','Dani Rovira, Michelle Jenner, Carme Calvell','5','Mike Goldwing, một cậu bé gan dạ, 12 tuổi, là cháu của cựu phi hành gia NASA - Frank. Ông Frank giờ đây đã về hưu và sống một mình sau khi ông bỏ lỡ cơ hội cùng phi hành gia Neil Armstrong và Buzz Aldrin thực hiện','hh','67YfSzkmDgw');";
+        return sql;
+    }
+    public String createDataMovie24(){
+        String sql = "INSERT INTO \"phim\" VALUES('hh09','The Road Chip(2016)','Walt Becker','Jason Lee, Jesica Ahlberg, Josh Green','5','Phim Sóc Siêu Quậy 4: Sóc Chuột Du Hí 2015 là câu chuyện tiếp nối về ban nhạc sóc chuột gồm 6 thành viên mang tên Chipmunks and Chipettes. ','hh','HzUNkgVRvZM');";
+        return sql;
+    }
+    public String createDataMovie25(){
+        String sql = "INSERT INTO \"phim\" VALUES('hh10','The Good Dinosaur','Peter Sohn','Jeffrey Wright, Frances McDormand, Maleah Nipay Padilla','5','Nửa cuối năm 2015 sẽ là khoảng thời gian đặc biệt với những khán giả yêu thích sự sáng tạo, bởi xưởng phim Pixar của Walt Disney Studios sẽ “chiêu đãi” hai bộ phim hoạt hình độc đáo','hh','hWemtpycSG0');";
+        return sql;
+    }
+    public String createDataMovie26(){
+        String sql = "INSERT INTO \"phim\" VALUES('gt06','Avarta','James Cameron','Zoe Saldana, Sam Worthington, Sigourney Weaver, Michelle Rodriguez','5','Avatar (biểu tượng đại diện) xoay quanh chuyến hành trình thám hiểm của Jake Sully (Sam Worthington), cựu sĩ quan thủy quân bị thương trong một cuộc chiến trên Trái Đất','gt','nbCY4SyH5dY');";
+        return sql;
+    }
+    public String createDataMovie27(){
+        String sql = "INSERT INTO \"phim\" VALUES('gt07','The First Avenger','Joe Johnston','Chris Evans, Hugo Weaving, Samuel L. Jackson, Richard Armitage, Tommy Lee Jones, Stanley Tucci, Hayley Atwell','5','Ban đầu, Captain America - Kẻ Báo Thù Đầu Tiên của hãng Marvel được tính quay ở Los Angeles, nhưng sau đó nhà sản xuất đã chuyển đến London, nơi là một phần trong bối cảnh của truyện','gt','hEBRkG9SCcs');";
+        return sql;
+    }
+    public String createDataMovie28(){
+        String sql = "INSERT INTO \"phim\" VALUES('gt08','Jonh Carter','Andrew Stantony','Taylor Kitsch, Lynn Collins, Willem Dafoe','5','Sao Hỏa, hay còn được các cư dân ở đó gọi là Barsoom, là nơi mà phần lớn câu chuyện này xảy ra. Đây từng là một hành tinh trù phú, một ngôi nhà của rất nhiều giống loài khác nhau','gt','s6vlvdsaGhU');";
+        return sql;
+    }
+    public String createDataMovie29(){
+        String sql = "INSERT INTO \"phim\" VALUES('gt09','Transformers 6','Michael Bay','Đang cập nhật','5','Với sự xuất hiện của kẻ thù mới, một trong những chủng tộc người ngoài hành tinh nhắm đến Trái Đất vì một mục đích là nguồn tài nguyên. Nhiệm vụ khó khăn hơn với nhóm Autobot là phải chiến đấu bảo vệ ngôi nhà thứ hai  của mình.','gt','GkKGM-dKNek');";
+        return sql;
+    }
+    public String createDataMovie30(){
+        String sql = "INSERT INTO \"phim\" VALUES('gt10','Harry Potter','David Yates','Daniel Radcliffe, Emma Watson, Rupert Grint','5','Phần 1 bắt đầu với việc Harry, Ron và Hermione thực thi nhiệm vụ hết sức nguy hiểm để theo dấu vết và phá hủy Trường Sinh Linh Giá - bí mật dẫn đến sự bất tử của Chúa tể Voldemort. ','gt','MxqsmsA8y5k');";
+        return sql;
+    }
 
 }

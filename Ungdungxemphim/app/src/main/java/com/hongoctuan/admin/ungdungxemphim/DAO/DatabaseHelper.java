@@ -18,17 +18,18 @@ import java.util.ArrayList;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DATABASE_NAME = "ungdungxemphim";
-    private static int DATABASE_VERSION = 1;
-
+    public static String TABLE_LICHSUSEARCH = "lichsusearch";
     public static String TABLE_PHIM = "phim";
     public static String TABLE_BINHLUAN = "binhluan";
-    public static String TABLE_LICHSUSEARCH = "lichsusearch";
+    public static String TABLE_VUNG = "vung";
+    private static int DATABASE_VERSION = 1;
+
+    public static String TABLE_RAP = "rap";
     Context context;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
-        //insertData();
     }
 
     public MovieDTO getPhim(String maphim){
@@ -183,43 +184,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void insertData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id", "hd01");
-        values.put("tenphim", "Biệt đội đánh thuê");
-        values.put("daodien", "Sylvester Stallone");
-        values.put("dienvien", "Lý Liên Kiệt, Sylvester Stallone, Jason Statham, Jet Li, Dolph Lundgren");
-        values.put("danhgia", "4");
-        values.put("tomtat", "Bộ phim là cuộc chiến của một nhóm lính đánh thuê, nhằm vào Nam Mỹ để hoàn thành nhiệm vụ " +
-                "là lật đổ một nhà độc tài tại đây. Nhà độc tài là tướng quân Garza. Dù là tướng quân nhưng ông lại bị một " +
-                "cưu điệp viên CIA  thao túng và ép phải ủng hộ cho việc sản xuất thuốc phiện.Khi nhóm đánh thuê do Barney Ross " +
-                "chỉ huy được chính CIA nhờ tiêu diệt cựu điệp viên xấu Paine thì Ross đã biết nhiệm vụ lần này vô cùng nguy hiểm. " +
-                "Anh đã có thể dừng lại nhưng sự ám ảnh về cô gái có bức vẽ tuyệt vời Sandra đã đẩy anh và nhóm đến một cuộc chiến " +
-                "đầy cam go.");
-        values.put("theloai", "hd");
-        values.put("url", "https://www.youtube.com/watch?v=0qjxbz7cBmU");
-
-
-        if(db.insert(TABLE_PHIM, null, values)!= -1){
-            Toast.makeText(context, "Thêm thành công!", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(context, "Thêm thất bại!", Toast.LENGTH_SHORT).show();
-        }
-        db.close();
-        SQLiteDatabase db2 = this.getWritableDatabase();
-        ContentValues values2 = new ContentValues();
-        values2.put("maphim", "hd01");
-        values2.put("nguoibinhluan", "User A");
-        values2.put("noidung", "phim rất hay!!!");
-        if(db2.insert(TABLE_BINHLUAN, null, values2)!= -1){
-            Toast.makeText(context, "Thêm thành công!", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(context, "Thêm thất bại!", Toast.LENGTH_SHORT).show();
-        }
-        db2.close();
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql="CREATE TABLE binhluan (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL,maphim TEXT, nguoibinhluan TEXT, noidung TEXT)";
@@ -227,6 +191,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sql="CREATE TABLE lichsusearch (keyword TEXT PRIMARY KEY)";
         db.execSQL(sql);
         sql="CREATE TABLE phim (id TEXT primary key,tenphim TEXT,daodien TEXT,dienvien TEXT,danhgia TEXT,tomtat TEXT,theloai TEXT,url TEXT)";
+        db.execSQL(sql);
+        sql="CREATE TABLE rap (tenrap TEXT PRIMARY KEY,vung TEXT)";
+        db.execSQL(sql);
+        sql="CREATE TABLE vung (tenvung TEXT PRIMARY KEY)";
         db.execSQL(sql);
 
         Data dt = new Data();
@@ -313,12 +281,107 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
         sql = dt.createDataMovie15();
         db.execSQL(sql);
+        sql = dt.createDataMovie16();
+        db.execSQL(sql);
+        sql = dt.createDataMovie17();
+        db.execSQL(sql);
+        sql = dt.createDataMovie18();
+        db.execSQL(sql);
+        sql = dt.createDataMovie19();
+        db.execSQL(sql);
+        sql = dt.createDataMovie20();
+        db.execSQL(sql);
+        sql = dt.createDataMovie21();
+        db.execSQL(sql);
+        sql = dt.createDataMovie22();
+        db.execSQL(sql);
+        sql = dt.createDataMovie23();
+        db.execSQL(sql);
+        sql = dt.createDataMovie24();
+        db.execSQL(sql);
+        sql = dt.createDataMovie25();
+        db.execSQL(sql);
+        sql = dt.createDataMovie26();
+        db.execSQL(sql);
+        sql = dt.createDataMovie27();
+        db.execSQL(sql);
+        sql = dt.createDataMovie28();
+        db.execSQL(sql);
+        sql = dt.createDataMovie29();
+        db.execSQL(sql);
+        sql = dt.createDataMovie30();
+        db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists" + TABLE_PHIM);
         db.execSQL("drop table if exists" + TABLE_BINHLUAN);
+        db.execSQL("drop table if exists" + TABLE_RAP);
+        db.execSQL("drop table if exists" + TABLE_VUNG);
         onCreate(db);
+    }
+
+    public ArrayList<String> getListRap(){
+        ArrayList<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from " + TABLE_RAP;
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        db.close();
+        return list;
+    }
+
+    public ArrayList<String> getRap(String vung){
+        ArrayList<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from " + TABLE_RAP + " where vung = '"+vung+"'  ORDER BY rowid DESC";
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        db.close();
+        return list;
+    }
+
+    public void insertRap(String tenrap, String vung){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("tenrap", tenrap);
+        values.put("vung", vung);
+        if(db.insert(TABLE_RAP, null, values)!= -1){
+        }else{
+        }
+        db.close();
+    }
+
+    public void insertVung(String tenvung){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("tenvung", tenvung);
+        if(db.insert(TABLE_VUNG, null, values)!= -1){
+        }else{
+        }
+        db.close();
+    }
+
+    public ArrayList<String> getVung(){
+        ArrayList<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from " + TABLE_VUNG ;
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        db.close();
+        return list;
     }
 }

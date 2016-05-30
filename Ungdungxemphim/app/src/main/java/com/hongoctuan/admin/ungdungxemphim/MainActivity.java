@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.hongoctuan.admin.ungdungxemphim.View.Contact;
 import com.hongoctuan.admin.ungdungxemphim.View.GoiYSearchFragment;
 import com.hongoctuan.admin.ungdungxemphim.View.Introduce;
+import com.hongoctuan.admin.ungdungxemphim.View.ListRap;
 import com.hongoctuan.admin.ungdungxemphim.View.MainFragment;
 import com.hongoctuan.admin.ungdungxemphim.View.NewsAndGift;
 import com.hongoctuan.admin.ungdungxemphim.View.Question;
@@ -42,7 +43,7 @@ public class MainActivity extends ActionBarActivity{
     int flagMenuLeft =0;
     int flagMenuRight = 0;
 
-    Integer[] menu = {R.drawable.ic_home, R.drawable.ic_history, R.drawable.ic_gift, R.drawable.ic_question,R.drawable.ic_intro,R.drawable.ic_contant};
+    Integer[] menu = {R.drawable.ic_home, R.drawable.ic_history,R.drawable.ic_list, R.drawable.ic_gift, R.drawable.ic_question,R.drawable.ic_intro,R.drawable.ic_contant};
     DrawerLayout mDrawerlayout;
     ListView mDrawerList_Left,mDrawerList_Right;
     ActionBarDrawerToggle mDrawerToggle;
@@ -150,6 +151,9 @@ public class MainActivity extends ActionBarActivity{
                 }else if(dataArray_left.get(position).equals("Tin Mới & Khuyến Mãi")){
                     Intent intent = new Intent(MainActivity.this, NewsAndGift.class);
                     startActivity(intent);
+                }else if(dataArray_left.get(position).equals("Danh Sách Rạp")){
+                    Intent intent = new Intent(MainActivity.this, ListRap.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -179,6 +183,8 @@ public class MainActivity extends ActionBarActivity{
         auto_Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                iv_back.setVisibility(View.VISIBLE);
+                auto_Search.setPadding(50, 0, 50, 0);
                 loadGoiYSeach(auto_Search.getText().toString());
             }
         });
@@ -209,6 +215,7 @@ public class MainActivity extends ActionBarActivity{
         dataArray_left.clear();
         dataArray_left.add("Trang Chủ");
         dataArray_left.add("Lich Chiếu Theo Rạp");
+        dataArray_left.add("Danh Sách Rạp");
         dataArray_left.add("Tin Mới & Khuyến Mãi");
         dataArray_left.add("Hỏi Đáp");
         dataArray_left.add("Giới Thiệu");

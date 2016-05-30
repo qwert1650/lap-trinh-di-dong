@@ -31,7 +31,7 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         db = new DatabaseHelper(context);
-        listPhim = db.getSearchPhim(tenphim);
+        //listPhim = db.getSearchPhim(tenphim);
         View rootView = inflater.inflate(R.layout.search_fragment, container, false);
         ListView lv_search = (ListView) rootView.findViewById(R.id.lv_search);
         if(listPhim.size() == 0){

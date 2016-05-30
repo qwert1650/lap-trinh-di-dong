@@ -55,11 +55,11 @@ public class MovieDTO implements Serializable {
     }
 
     public String getMovieUrl() {
-        return url;
+        return urlTrail;
     }
 
     public void setMovieUrl(String url) {
-        this.url = url;
+        this.urlTrail = url;
     }
 
     public String getCategory() {
@@ -77,5 +77,15 @@ public class MovieDTO implements Serializable {
     String dienvien;
     String danhgia;
     String tomtat;
-    String url;
+    String urlTrail;
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    String urlImage;
 }

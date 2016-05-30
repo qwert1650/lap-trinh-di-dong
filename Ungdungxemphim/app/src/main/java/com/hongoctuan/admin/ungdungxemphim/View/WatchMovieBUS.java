@@ -33,7 +33,8 @@ public class WatchMovieBUS extends YouTubeBaseActivity implements YouTubePlayer.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_watch_movie);Intent callerIntent=getIntent();
+        setContentView(R.layout.activity_watch_movie);
+        Intent callerIntent=getIntent();
         Bundle packageFromCaller= callerIntent.getBundleExtra("myData");
         txt_watchTenphim = (TextView) findViewById(R.id.txt_watchTenphim);
         iv_like = (ImageView) findViewById(R.id.iv_like);

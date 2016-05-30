@@ -4,6 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <supports-screens>
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true"
+    </supports-screens>
 
     <application
         android:allowBackup="true"
@@ -30,7 +41,16 @@
         <activity android:name=".View.Question" />
         <activity android:name=".View.ChangeInfor" />
         <activity android:name=".View.NewsAndGift" />
-        <activity android:name=".View.Detail_NewsAndGift"></activity>
+        <activity android:name=".View.Detail_NewsAndGift" />
+        <activity android:name=".View.BookTicket" />
+        <activity android:name=".View.ListRap" />
+        <activity android:name=".View.DetailRap"></activity>
+        <meta-data
+            android:name="com.google.android.gms.vision"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDnbCEBgJ4z71H29ePcisseHtyoA7sTBLI" />
     </application>
 
 </manifest>
