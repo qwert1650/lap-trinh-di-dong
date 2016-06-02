@@ -4,4 +4,6 @@
     <string name="noidungphim"><b><u>Nội Dung Phim</u></b></string>
     <string name="binhchon"><b><u>Bình Chọn:</u></b></string>
     <string name="player_error">Error initializing YouTube player</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="arrowDesc">Arrow Description</string>
 </resources>

@@ -1,7 +1,11 @@
 package com.hongoctuan.admin.ungdungxemphim.BUS;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,15 +15,14 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.hongoctuan.admin.ungdungxemphim.DAO.DatabaseHelper;
 import com.hongoctuan.admin.ungdungxemphim.R;
+import com.hongoctuan.admin.ungdungxemphim.View.ListLichChieu;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,6 +37,7 @@ import java.net.URISyntaxException;
  */
 public class GetDetailRapBUS extends AsyncTask<String,Void,String> {
     Activity context;
+    String marap;
     public GetDetailRapBUS(Activity context) {
         this.context = context;
     }
@@ -81,6 +85,7 @@ public class GetDetailRapBUS extends AsyncTask<String,Void,String> {
             txt_soghe.setText("Số Ghế: "+jsonObject.getString("SoGhe"));
             txt_sophone.setText("Hotline: " + jsonObject.getString("Phone"));
             String hinh= jsonObject.getString("HinhAnh");
+            this.marap = jsonObject.getString("id");
             GetImageDetailBUS getImageDetailBUS = new GetImageDetailBUS(context,iv_hinhrap);
             getImageDetailBUS.execute(jsonObject.getString("HinhAnh"));
             LatLng khtn_university = new LatLng(Double.parseDouble(jsonObject.getString("ViDo")),Double.parseDouble(jsonObject.getString("KinhDo").toString()));
@@ -88,8 +93,23 @@ public class GetDetailRapBUS extends AsyncTask<String,Void,String> {
             googleMap = ((MapFragment)context.getFragmentManager().findFragmentById(R.id.map)).getMap();
             Marker khtn = googleMap.addMarker(new MarkerOptions().position(khtn_university).title("My school!").snippet("Khoa Hoc Tu Nhien!"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(khtn_university, 15));
+            Button btn_lichchieu = (Button) context.findViewById(R.id.btn_lichchieurap);
+            btn_lichchieu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getlichchieu();
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getlichchieu(){
+        Intent intent = new Intent(context, ListLichChieu.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("marap", marap);
+        intent.putExtra("myData",bundle);
+        context.startActivity(intent);
     }
 }

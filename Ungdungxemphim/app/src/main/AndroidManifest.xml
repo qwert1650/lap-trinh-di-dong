@@ -44,13 +44,19 @@
         <activity android:name=".View.Detail_NewsAndGift" />
         <activity android:name=".View.BookTicket" />
         <activity android:name=".View.ListRap" />
-        <activity android:name=".View.DetailRap"></activity>
+        <activity android:name=".View.DetailRap" />
+
         <meta-data
             android:name="com.google.android.gms.vision"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDnbCEBgJ4z71H29ePcisseHtyoA7sTBLI" />
+
+        <activity android:name=".View.LichChieuRap" />
+        <activity android:name=".BUS.dfjslkf" />
+        <activity android:name=".View.ListLichChieu" />
+        <activity android:name=".View.DatVe"></activity>
     </application>
 
 </manifest>
