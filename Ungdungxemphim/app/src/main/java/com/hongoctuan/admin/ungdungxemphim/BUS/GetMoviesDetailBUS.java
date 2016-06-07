@@ -13,6 +13,7 @@ import com.hongoctuan.admin.ungdungxemphim.DTO.MovieDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
 import com.hongoctuan.admin.ungdungxemphim.View.BookTicket;
 import com.hongoctuan.admin.ungdungxemphim.View.WatchMovieBUS;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -83,7 +84,7 @@ public class GetMoviesDetailBUS extends AsyncTask<String,Void,String> {
             e1.printStackTrace();
         }
         ImageView iv_poster = (ImageView)context.findViewById(R.id.iv_phim);
-        GetImageDetailBUS getImageDetailBUS = new GetImageDetailBUS(context,iv_poster);
+//        GetImageDetailBUS getImageDetailBUS = new GetImageDetailBUS(context,iv_poster);
         TextView txt_MovieName = (TextView) context.findViewById(R.id.txt_tenphim);
         TextView txt_DirectorName = (TextView) context.findViewById(R.id.txt_daodien);
         TextView txt_Actor = (TextView) context.findViewById(R.id.txt_dienvien);
@@ -91,7 +92,8 @@ public class GetMoviesDetailBUS extends AsyncTask<String,Void,String> {
         Button btn_xemPhim = (Button)context.findViewById(R.id.btn_xemphim);
         Button btn_datve2d = (Button)context.findViewById(R.id.btn_datve2d);
         Button btn_datve3d = (Button)context.findViewById(R.id.btn_datve3d);
-        getImageDetailBUS.execute(item.getUrlImage());
+        Picasso.with(context).load(item.getUrlImage()).resize(250, 500).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_poster);
+//        getImageDetailBUS.execute(item.getUrlImage());
         txt_MovieName.setText(item.getMovieName());
         txt_DirectorName.setText("Đạo Diễn: " + item.getDirectorName());
         txt_Actor.setText("Diễn Viên: "+item.getActor());

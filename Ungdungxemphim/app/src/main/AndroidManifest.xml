@@ -56,7 +56,9 @@
         <activity android:name=".View.LichChieuRap" />
         <activity android:name=".BUS.dfjslkf" />
         <activity android:name=".View.ListLichChieu" />
-        <activity android:name=".View.DatVe"></activity>
+        <activity android:name=".View.DatVe" />
+        <activity android:name=".View.HuyVe" />
+        <activity android:name=".View.LichSuMuaVe"></activity>
     </application>
 
 </manifest>

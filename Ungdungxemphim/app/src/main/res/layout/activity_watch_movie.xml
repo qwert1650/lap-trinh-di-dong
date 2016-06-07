@@ -9,67 +9,67 @@
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorOrange"
-        android:text="Tên Phim"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/txt_watchTenphim" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="17sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/colorOrange"-->
+        <!--android:text="Tên Phim"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:id="@+id/txt_watchTenphim" />-->
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/iv_like" />
+        <!--<ImageView-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:id="@+id/iv_like" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/txt_like" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="10"-->
+            <!--android:textColor="#FFFFFF"-->
+            <!--android:layout_marginLeft="3dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:id="@+id/txt_like" />-->
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_marginTop="2dp"
-            android:layout_height="20dp"
-            android:id="@+id/iv_unlike" />
+        <!--<ImageView-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:id="@+id/iv_unlike" />-->
 
-        <TextView
-            android:layout_marginLeft="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5"
-            android:textColor="#FFFFFF"
-            android:id="@+id/txt_unlike" />
+        <!--<TextView-->
+            <!--android:layout_marginLeft="3dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="5"-->
+            <!--android:textColor="#FFFFFF"-->
+            <!--android:id="@+id/txt_unlike" />-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/ic_line"
-        android:id="@+id/imageView3" />
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:src="@drawable/ic_line"-->
+        <!--android:id="@+id/imageView3" />-->
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv_goiyPhim" />
+    <!--<ListView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/lv_goiyPhim" />-->
 </LinearLayout>

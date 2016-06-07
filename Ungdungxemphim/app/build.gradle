@@ -29,5 +29,8 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.google.android.gms:play-services-maps:8.4.0'
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    //compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

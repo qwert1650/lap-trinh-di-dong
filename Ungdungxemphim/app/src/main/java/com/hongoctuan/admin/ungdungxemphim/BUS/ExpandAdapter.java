@@ -81,7 +81,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getChildView(int groupPosition, int childPosition,
+	public View getChildView(final int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent){
 		// TODO Auto-generated method stub
 		View v = convertView;
@@ -92,15 +92,17 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 		final Button btnitem = (Button) v.findViewById(R.id.text);
 		int dem =0;
 		for(int i = 0; i < listlichchieu.size(); i++){
-			if(listlichchieu.get(i).getTenphim().equals(item[0])){
+			if(listlichchieu.get(i).getTenphim().equals(item[groupPosition])){
 				dem++;
 			}
 		}
 		String[] arrtenphim = new String[dem];
+		final String[] malichchieu = new String[dem];
 		int k =0;
 		for(int i = 0; i < listlichchieu.size(); i++){
-			if(listlichchieu.get(i).getTenphim().equals(item[0])){
-				arrtenphim[k] = listlichchieu.get(i).getKythuat() +"D - "+ "Thời gian: "+listlichchieu.get(i).getThoigianchieu()+ " - Giá vé: " + listlichchieu.get(i).getGiave();
+			if(listlichchieu.get(i).getTenphim().equals(item[groupPosition])){
+				arrtenphim[k] = listlichchieu.get(i).getKythuat() +"D - "+ "Thời gian ("+listlichchieu.get(i).getThoigianchieu()+ ") - Giá vé: " + listlichchieu.get(i).getGiave();
+				malichchieu[k]= listlichchieu.get(i).getMalichchieu();
 				k++;
 			}
 		}
@@ -111,6 +113,8 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 				Intent intent = new Intent(context, DatVe.class);
 				Bundle bundle = new Bundle();
 				bundle.putString("info", btnitem.getText().toString());
+				bundle.putString("tenphim", item[groupPosition]);
+				bundle.putString("malichchieu",malichchieu[childPosition]);
 				intent.putExtra("myData",bundle);
 				context.startActivity(intent);
 			}

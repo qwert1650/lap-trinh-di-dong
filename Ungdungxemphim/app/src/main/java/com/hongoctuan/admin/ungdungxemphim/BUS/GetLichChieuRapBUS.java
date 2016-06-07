@@ -92,15 +92,6 @@ public class GetLichChieuRapBUS extends AsyncTask<String,Void,String> {
 
         listView.setAdapter(adapter);
     }
-//    public int demk(ArrayList<LichChieuRapDTO> list,String tenphim){
-//        int k =0;
-//        for(int i =0; i < list.size(); i++){
-//            if(list.get(i).equals(tenphim)){
-//                k++;
-//            }
-//        }
-//        return k;
-//    }
     static ArrayList<String> removeDuplicates(ArrayList<String> list) {
 
         // Store unique items in result.

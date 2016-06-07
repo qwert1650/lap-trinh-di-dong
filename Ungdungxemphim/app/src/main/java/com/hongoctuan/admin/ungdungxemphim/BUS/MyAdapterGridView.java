@@ -2,57 +2,93 @@ package com.hongoctuan.admin.ungdungxemphim.BUS;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hongoctuan.admin.ungdungxemphim.DTO.DatGheDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 
 /**
  * Created by admin on 6/2/2016.
  */
-public class MyAdapterGridView extends ArrayAdapter<String> {
-    Activity context;
-    String[] objects;
-    public MyAdapterGridView(Activity context,int resource, String[] objects ) {
+public class MyAdapterGridView extends ArrayAdapter<DatGheDTO> {
+    Context context;
+    ArrayList<DatGheDTO> objects;
+    ArrayList<String> result;
+    public MyAdapterGridView(Context context,int resource, ArrayList<DatGheDTO> objects, ArrayList<String> result) {
         super(context, R.layout.layout_sodo_custom, objects);
         this.context = context;
         this.objects = objects;
+        this.result = result;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_sodo_custom, null, true);
-        ImageView imageView = (ImageView) view.findViewById(R.id.iv_iconghe);
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        View view = convertView;
+        if (view == null) {
+            LayoutInflater vi;
+            vi = LayoutInflater.from(getContext());
+            view = vi.inflate(R.layout.layout_sodo_custom, null);
+        }
+        final ImageView imageView = (ImageView) view.findViewById(R.id.iv_iconghe);
         TextView txt_ghe = (TextView) view.findViewById(R.id.txt_vitrighe);
-        int maphim = context.getResources().getIdentifier("com.hongoctuan.admin.ungdungxemphim:drawable/ic_ghe", null, null);
-        imageView.setImageResource(maphim);
-        txt_ghe.setText(objects[position]);
+        final int[] maphim = {0};
+        if(result.contains(objects.get(position).getMaghe())){
+            maphim[0] = context.getResources().getIdentifier("com.hongoctuan.admin.ungdungxemphim:drawable/ic_ghedadat", null, null);
+        }else {
+            maphim[0] = context.getResources().getIdentifier("com.hongoctuan.admin.ungdungxemphim:drawable/ic_ghe", null, null);
+        }
+        imageView.setImageResource(maphim[0]);
+        txt_ghe.setText(objects.get(position).getMaghe());
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pre=context.getSharedPreferences("ungdungxemphim", context.MODE_PRIVATE);
+                String temp = pre.getString("username", "");
+                DatGheDTO dv = new DatGheDTO();
+                dv.setMalichchieu(objects.get(position).getMalichchieu());
+                dv.setMaghe(objects.get(position).getMaghe());
+                dv.setTaikhoan(pre.getString("username", ""));
+                dv.setTrangthai("1");
+//                DatVeBUS datVeBUS = new DatVeBUS(context,dv);
+//                datVeBUS.execute();
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://restfullapiservice.somee.com")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                interface_getdatve rest = retrofit.create(interface_getdatve.class);
+                Call<DatGheDTO> call = rest.datghe(dv);
+                call.enqueue(new Callback<DatGheDTO>() {
+                    @Override
+                    public void onResponse(Response<DatGheDTO> response, Retrofit retrofit) {
+                        int temp = context.getResources().getIdentifier("com.hongoctuan.admin.ungdungxemphim:drawable/ic_ghecho", null, null);
+                        imageView.setImageResource(temp);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+
+                    }
+                });
+            }
+        });
         return view;
     }
-
-    //    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        ImageView imgView = context
-////        if(convertView==null){
-////            imgView=new ImageView(context);
-////            //can chỉnh lại hình cho đẹp
-////            imgView.setLayoutParams(new GridView.LayoutParams(85, 85));
-////            imgView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-////            imgView.setPadding(5, 5, 5, 5);
-////        }else{
-////            imgView=(ImageView) convertView;
-////        }
-//        //lấy đúng vị trí hình ảnh được chọn
-//        //gán lại ImageResource
-//        int maphim = context.getResources().getIdentifier("com.hongoctuan.admin.ungdungxemphim:drawable/ic_ghe", null, null);
-//        imgView.setImageResource(maphim);
-//        return imgView;
-//    }
 }

@@ -1,6 +1,7 @@
 package com.hongoctuan.admin.ungdungxemphim.BUS;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
@@ -81,7 +82,12 @@ public class LoginAccountBUS extends AsyncTask<String, Void, String> {
                 user.setPhoneNumber(jsonUser.getString("phone"));
                 user.setSex(jsonUser.getString("gioitinh"));
                 user.setAge(jsonUser.getString("tuoi"));
-
+                SharedPreferences pre= context.getSharedPreferences("ungdungxemphim", context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=pre.edit();
+                editor.clear();
+                editor.putString("idname", jsonUser.getString("id"));
+                editor.putString("username", jsonUser.getString("name"));
+                editor.commit();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -1,12 +1,17 @@
 package com.hongoctuan.admin.ungdungxemphim.BUS;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hongoctuan.admin.ungdungxemphim.DTO.MovieDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
+import com.squareup.okhttp.ResponseBody;
+import com.squareup.picasso.Picasso;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -22,6 +27,12 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by admin on 5/24/2016.
@@ -123,27 +134,26 @@ public class GetMoviesCatogeryBUS extends AsyncTask<String,Void,String> {
         ImageView iv_hd08 = (ImageView) context.findViewById(R.id.iv_hd08);
         ImageView iv_hd09 = (ImageView) context.findViewById(R.id.iv_hd09);
         ImageView iv_hd10 = (ImageView) context.findViewById(R.id.iv_hd10);
-
-        GetImageDetailBUS getHd01BUS = new GetImageDetailBUS(context,iv_hd01);
-        getHd01BUS.execute(arrMovie.get(0).getUrlImage());
-        GetImageDetailBUS getHd02BUS = new GetImageDetailBUS(context,iv_hd02);
-        getHd02BUS.execute(arrMovie.get(1).getUrlImage());
-        GetImageDetailBUS getHd03BUS = new GetImageDetailBUS(context,iv_hd03);
-        getHd03BUS.execute(arrMovie.get(2).getUrlImage());
-        GetImageDetailBUS getHd04BUS = new GetImageDetailBUS(context,iv_hd04);
-        getHd04BUS.execute(arrMovie.get(3).getUrlImage());
-        GetImageDetailBUS getHd05BUS = new GetImageDetailBUS(context,iv_hd05);
-        getHd05BUS.execute(arrMovie.get(4).getUrlImage());
-        GetImageDetailBUS getHd06BUS = new GetImageDetailBUS(context,iv_hd06);
-        getHd06BUS.execute(arrMovie.get(5).getUrlImage());
-        GetImageDetailBUS getHd07BUS = new GetImageDetailBUS(context,iv_hd07);
-        getHd07BUS.execute(arrMovie.get(6).getUrlImage());
-        GetImageDetailBUS getHd08BUS = new GetImageDetailBUS(context,iv_hd08);
-        getHd08BUS.execute(arrMovie.get(7).getUrlImage());
-        GetImageDetailBUS getHd09BUS = new GetImageDetailBUS(context,iv_hd09);
-        getHd09BUS.execute(arrMovie.get(8).getUrlImage());
-        GetImageDetailBUS getHd10BUS = new GetImageDetailBUS(context,iv_hd10);
-        getHd10BUS.execute(arrMovie.get(9).getUrlImage());
+        String URL=arrMovie.get(0).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd01);
+        URL=arrMovie.get(1).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd02);
+        URL=arrMovie.get(2).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd03);
+        URL=arrMovie.get(3).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd04);
+        URL=arrMovie.get(4).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd05);
+        URL=arrMovie.get(5).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd06);
+        URL=arrMovie.get(6).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd07);
+        URL=arrMovie.get(7).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd08);
+        URL=arrMovie.get(8).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd09);
+        URL=arrMovie.get(9).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hd10);
     }
 
     private void setdataCatoonMovie(ArrayList<MovieDTO> arrMovie){
@@ -180,26 +190,26 @@ public class GetMoviesCatogeryBUS extends AsyncTask<String,Void,String> {
         ImageView iv_hh09 = (ImageView) context.findViewById(R.id.iv_hh09);
         ImageView iv_hh10 = (ImageView) context.findViewById(R.id.iv_hh10);
 
-        GetImageDetailBUS getHh01BUS = new GetImageDetailBUS(context,iv_hh01);
-        getHh01BUS.execute(arrMovie.get(0).getUrlImage());
-        GetImageDetailBUS getHh02BUS = new GetImageDetailBUS(context,iv_hh02);
-        getHh02BUS.execute(arrMovie.get(1).getUrlImage());
-        GetImageDetailBUS getHh03BUS = new GetImageDetailBUS(context,iv_hh03);
-        getHh03BUS.execute(arrMovie.get(2).getUrlImage());
-        GetImageDetailBUS getHh04BUS = new GetImageDetailBUS(context,iv_hh04);
-        getHh04BUS.execute(arrMovie.get(3).getUrlImage());
-        GetImageDetailBUS getHh05BUS = new GetImageDetailBUS(context,iv_hh05);
-        getHh05BUS.execute(arrMovie.get(4).getUrlImage());
-        GetImageDetailBUS getHh06BUS = new GetImageDetailBUS(context,iv_hh06);
-        getHh06BUS.execute(arrMovie.get(5).getUrlImage());
-        GetImageDetailBUS getHh07BUS = new GetImageDetailBUS(context,iv_hh07);
-        getHh07BUS.execute(arrMovie.get(6).getUrlImage());
-        GetImageDetailBUS getHh08BUS = new GetImageDetailBUS(context,iv_hh08);
-        getHh08BUS.execute(arrMovie.get(7).getUrlImage());
-        GetImageDetailBUS getHh09BUS = new GetImageDetailBUS(context,iv_hh09);
-        getHh09BUS.execute(arrMovie.get(8).getUrlImage());
-        GetImageDetailBUS getHh10BUS = new GetImageDetailBUS(context,iv_hh10);
-        getHh10BUS.execute(arrMovie.get(9).getUrlImage());
+        String URL=arrMovie.get(0).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh01);
+        URL=arrMovie.get(1).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh02);
+        URL=arrMovie.get(2).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh03);
+        URL=arrMovie.get(3).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh04);
+        URL=arrMovie.get(4).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh05);
+        URL=arrMovie.get(5).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh06);
+        URL=arrMovie.get(6).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh07);
+        URL=arrMovie.get(7).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh08);
+        URL=arrMovie.get(8).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh09);
+        URL=arrMovie.get(9).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hh10);
     }
 
     private void setdataFictionMovie(ArrayList<MovieDTO> arrMovie){
@@ -225,7 +235,7 @@ public class GetMoviesCatogeryBUS extends AsyncTask<String,Void,String> {
         txt_gt09.setText(arrMovie.get(8).getMovieName());
         txt_gt10.setText(arrMovie.get(9).getMovieName());
 
-        ImageView iv_gt01 = (ImageView) context.findViewById(R.id.iv_gt01);
+        final ImageView iv_gt01 = (ImageView) context.findViewById(R.id.iv_gt01);
         ImageView iv_gt02 = (ImageView) context.findViewById(R.id.iv_gt02);
         ImageView iv_gt03 = (ImageView) context.findViewById(R.id.iv_gt03);
         ImageView iv_gt04 = (ImageView) context.findViewById(R.id.iv_gt04);
@@ -236,25 +246,27 @@ public class GetMoviesCatogeryBUS extends AsyncTask<String,Void,String> {
         ImageView iv_gt09 = (ImageView) context.findViewById(R.id.iv_gt09);
         ImageView iv_gt10 = (ImageView) context.findViewById(R.id.iv_gt10);
 
-        GetImageDetailBUS getGt01BUS = new GetImageDetailBUS(context,iv_gt01);
-        getGt01BUS.execute(arrMovie.get(0).getUrlImage());
-        GetImageDetailBUS getGt02BUS = new GetImageDetailBUS(context,iv_gt02);
-        getGt02BUS.execute(arrMovie.get(1).getUrlImage());
-        GetImageDetailBUS getGt03BUS = new GetImageDetailBUS(context,iv_gt03);
-        getGt03BUS.execute(arrMovie.get(2).getUrlImage());
-        GetImageDetailBUS getGt04BUS = new GetImageDetailBUS(context,iv_gt04);
-        getGt04BUS.execute(arrMovie.get(3).getUrlImage());
-        GetImageDetailBUS getGt05BUS = new GetImageDetailBUS(context,iv_gt05);
-        getGt05BUS.execute(arrMovie.get(4).getUrlImage());
-        GetImageDetailBUS getGt06BUS = new GetImageDetailBUS(context,iv_gt06);
-        getGt06BUS.execute(arrMovie.get(5).getUrlImage());
-        GetImageDetailBUS getGt07BUS = new GetImageDetailBUS(context,iv_gt07);
-        getGt07BUS.execute(arrMovie.get(6).getUrlImage());
-        GetImageDetailBUS getGt08BUS = new GetImageDetailBUS(context,iv_gt08);
-        getGt08BUS.execute(arrMovie.get(7).getUrlImage());
-        GetImageDetailBUS getGt09BUS = new GetImageDetailBUS(context,iv_gt09);
-        getGt09BUS.execute(arrMovie.get(8).getUrlImage());
-        GetImageDetailBUS getGt10BUS = new GetImageDetailBUS(context,iv_gt10);
-        getGt10BUS.execute(arrMovie.get(9).getUrlImage());
+//        GetImageDetailBUS getGt02BUS = new GetImageDetailBUS(context,iv_gt02);
+//        getGt02BUS.execute(arrMovie.get(1).getUrlImage());
+        String URL=arrMovie.get(0).getUrlImage();
+        Picasso.with(context).load(URL).resize(200, 300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt01);
+        URL=arrMovie.get(1).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt02);
+        URL=arrMovie.get(2).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt03);
+        URL=arrMovie.get(3).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt04);
+        URL=arrMovie.get(4).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt05);
+        URL=arrMovie.get(5).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt06);
+        URL=arrMovie.get(6).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt07);
+        URL=arrMovie.get(7).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt08);
+        URL=arrMovie.get(8).getUrlImage();
+        Picasso.with(context).load(URL).resize(200,300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt09);
+        URL=arrMovie.get(9).getUrlImage();
+        Picasso.with(context).load(URL).resize(200, 300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_gt10);
     }
 }
