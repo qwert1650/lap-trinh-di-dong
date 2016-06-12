@@ -1,6 +1,5 @@
 package com.hongoctuan.admin.ungdungxemphim.BUS;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -14,9 +13,7 @@ import android.widget.Toast;
 import com.hongoctuan.admin.ungdungxemphim.DTO.DatGheDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -33,7 +30,7 @@ public class MyAdapterGridView extends ArrayAdapter<DatGheDTO> {
     ArrayList<DatGheDTO> objects;
     ArrayList<String> result;
     public MyAdapterGridView(Context context,int resource, ArrayList<DatGheDTO> objects, ArrayList<String> result) {
-        super(context, R.layout.layout_sodo_custom, objects);
+        super(context, R.layout.customadapter_sodorap, objects);
         this.context = context;
         this.objects = objects;
         this.result = result;
@@ -45,7 +42,7 @@ public class MyAdapterGridView extends ArrayAdapter<DatGheDTO> {
         if (view == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.layout_sodo_custom, null);
+            view = vi.inflate(R.layout.customadapter_sodorap, null);
         }
         final ImageView imageView = (ImageView) view.findViewById(R.id.iv_iconghe);
         TextView txt_ghe = (TextView) view.findViewById(R.id.txt_vitrighe);
@@ -67,8 +64,6 @@ public class MyAdapterGridView extends ArrayAdapter<DatGheDTO> {
                 dv.setMaghe(objects.get(position).getMaghe());
                 dv.setTaikhoan(pre.getString("username", ""));
                 dv.setTrangthai("1");
-//                DatVeBUS datVeBUS = new DatVeBUS(context,dv);
-//                datVeBUS.execute();
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://restfullapiservice.somee.com")
                         .addConverterFactory(GsonConverterFactory.create())
@@ -80,6 +75,7 @@ public class MyAdapterGridView extends ArrayAdapter<DatGheDTO> {
                     public void onResponse(Response<DatGheDTO> response, Retrofit retrofit) {
                         int temp = context.getResources().getIdentifier("com.hongoctuan.admin.ungdungxemphim:drawable/ic_ghecho", null, null);
                         imageView.setImageResource(temp);
+                        Toast.makeText(context,"Đặt vé thành công!",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

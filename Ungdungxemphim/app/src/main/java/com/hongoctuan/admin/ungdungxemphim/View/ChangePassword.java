@@ -35,5 +35,12 @@ public class ChangePassword extends AppCompatActivity {
                 finish();
             }
         });
+        Button btn_finish = (Button) findViewById(R.id.btn_finish);
+        btn_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

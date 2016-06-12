@@ -42,12 +42,13 @@ public class CustomAdapter_HuyDatVe extends ArrayAdapter<VeDTO> {
         TextView txt_vemaghe = (TextView) view.findViewById(R.id.txt_vemaghe);
         TextView txt_vephong = (TextView) view.findViewById(R.id.txt_vephong);
         TextView txt_verap = (TextView) view.findViewById(R.id.txt_verap);
-        txt_vegiochieu.setText(objects.get(position).getThoigian().toString());
-        txt_vekythuat.setText(objects.get(position).getKythuat().toString());
-        txt_vemaghe.setText(objects.get(position).getMaghe().toString());
-        txt_vephong.setText(objects.get(position).getPhong().toString());
-        txt_verap.setText(objects.get(position).getTenrap().toString());
-        txt_vetenphim.setText(objects.get(position).getPhim().toString());
+
+        txt_vegiochieu.setText(" - Giờ chiếu: "+objects.get(position).getThoigian().toString());
+        txt_vekythuat.setText(" - Loại Phim: "+objects.get(position).getKythuat().toString()+"D");
+        txt_vemaghe.setText("Ghế: "+objects.get(position).getMaghe().toString());
+        txt_vephong.setText(" - Phòng: "+objects.get(position).getPhong().toString());
+        txt_verap.setText("Rạp: "+objects.get(position).getTenrap().toString());
+        txt_vetenphim.setText("Phim: "+objects.get(position).getPhim().toString());
         return view;
     }
 }

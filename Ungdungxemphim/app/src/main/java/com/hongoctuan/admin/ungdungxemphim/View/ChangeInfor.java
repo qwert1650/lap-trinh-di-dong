@@ -56,9 +56,17 @@ public class ChangeInfor extends AppCompatActivity {
         btnXacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String []arr = {accountDTO.getAccountName(),editCMND.getText().toString(),editPhone.getText().toString(),gioitinh,editAge.getText().toString()};
+                String[] arr = {accountDTO.getAccountName(), editCMND.getText().toString(), editPhone.getText().toString(), gioitinh, editAge.getText().toString()};
                 ChangeInforBUS changeInforBUS = new ChangeInforBUS(getApplicationContext());
                 changeInforBUS.execute(arr);
+                finish();
+            }
+        });
+        Button btn_CloseChangeinfor = (Button) findViewById(R.id.btn_CloseChangeinfor);
+        btn_CloseChangeinfor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

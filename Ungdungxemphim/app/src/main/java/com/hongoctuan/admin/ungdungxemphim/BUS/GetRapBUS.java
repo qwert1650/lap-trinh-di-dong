@@ -81,15 +81,15 @@ public class GetRapBUS extends AsyncTask<String,Void,String> {
                 arrRap.add(item);
                 arrstringRap.add(item.getNameRap());
             }
-            sharedPreferences = context.getSharedPreferences("datvexemphim", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor= sharedPreferences.edit();
-            editor.putString("marap", arrRap.get(0).getId());
-            editor.commit();
+//            sharedPreferences = context.getSharedPreferences("datvexemphim", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor= sharedPreferences.edit();
+//            editor.putString("marap", arrRap.get(0).getId());
+//            editor.commit();
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Spinner spin=(Spinner) context.findViewById(R.id.sp_rap);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_dropdown_item,arrstringRap);
-        spin.setAdapter(adapter);
+//        Spinner spin=(Spinner) context.findViewById(R.id.sp_rap);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_dropdown_item,arrstringRap);
+//        spin.setAdapter(adapter);
     }
 }

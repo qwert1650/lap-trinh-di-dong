@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBlack"
     android:orientation="vertical"
     tools:context="com.hongoctuan.admin.ungdungxemphim.View.DatVe">
 
@@ -10,10 +11,19 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="6"></LinearLayout>
+        android:background="@color/colorBlack"
+        android:layout_weight="6">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_manhinh"
+            android:id="@+id/imageView5" />
+    </LinearLayout>
 
     <GridView
         android:layout_width="match_parent"
+        android:background="@color/colorBlack"
         android:layout_height="match_parent"
         android:numColumns="10"
         android:layout_weight="2"

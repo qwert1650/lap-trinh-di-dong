@@ -119,10 +119,6 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         txt_gt09 = (TextView) rootView.findViewById(R.id.txt_gt09);
         txt_gt10 = (TextView) rootView.findViewById(R.id.txt_gt10);
 
-        txt_hdTatca = (TextView) rootView.findViewById(R.id.txt_hdTatca);
-        txt_hhTatca = (TextView) rootView.findViewById(R.id.txt_hhTatca);
-        txt_gtTatca = (TextView) rootView.findViewById(R.id.txt_gtTatca);
-
         iv_hd01.setOnClickListener(this);
         iv_hd02.setOnClickListener(this);
         iv_hd03.setOnClickListener(this);
@@ -155,28 +151,6 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         iv_gt08.setOnClickListener(this);
         iv_gt09.setOnClickListener(this);
         iv_gt10.setOnClickListener(this);
-
-        txt_hdTatca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadAllMovie("hd");
-            }
-        });
-
-        txt_hhTatca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadAllMovie("hh");
-            }
-        });
-
-        txt_gtTatca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadAllMovie("gt");
-            }
-        });
-
 
         for(int i = 0; i < IMAGES.length;i++)
             ImagesArray.add(IMAGES[i]);
@@ -270,14 +244,6 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         Intent intent = new Intent(context, MovieDetail.class);
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
-        intent.putExtra("myData",bundle);
-        startActivity(intent);
-    }
-
-    public void loadAllMovie(String maloai){
-        Intent intent = new Intent(context, TypeMovie.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("maloai", maloai);
         intent.putExtra("myData",bundle);
         startActivity(intent);
     }

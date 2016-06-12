@@ -10,6 +10,7 @@ import com.hongoctuan.admin.ungdungxemphim.BUS.GetImageDetailBUS;
 import com.hongoctuan.admin.ungdungxemphim.BUS.GetImageKhuyenMaiBUS;
 import com.hongoctuan.admin.ungdungxemphim.DTO.KhuyenMaiDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
+import com.squareup.picasso.Picasso;
 
 public class Detail_NewsAndGift extends AppCompatActivity {
     ImageView ivHinhAnhKM;
@@ -27,8 +28,7 @@ public class Detail_NewsAndGift extends AppCompatActivity {
 
         Intent callerIntent=getIntent();
         final KhuyenMaiDTO khuyenMaiDTO= (KhuyenMaiDTO) callerIntent.getSerializableExtra("khuyenmai");
-        GetImageDetailBUS getImageDetailBUS = new GetImageDetailBUS(this,ivHinhAnhKM);
-        getImageDetailBUS.execute(khuyenMaiDTO.getHinhAnhKM());
+        Picasso.with(this).load(khuyenMaiDTO.getHinhAnhKM()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(ivHinhAnhKM);
         txtTenKM.setText(khuyenMaiDTO.getTenKM());
         txtNgayKM.setText(khuyenMaiDTO.getNgayKM());
         txtNoiDungKM.setText(khuyenMaiDTO.getNoiDungKM());

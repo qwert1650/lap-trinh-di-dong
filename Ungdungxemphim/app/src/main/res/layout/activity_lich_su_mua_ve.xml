@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBlack"
     tools:context="com.hongoctuan.admin.ungdungxemphim.View.LichSuMuaVe">
 
     <ListView
@@ -10,5 +11,6 @@
         android:layout_height="match_parent"
         android:id="@+id/lv_lichsumuave"
         android:layout_alignParentTop="true"
+        android:background="@color/colorBlack"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

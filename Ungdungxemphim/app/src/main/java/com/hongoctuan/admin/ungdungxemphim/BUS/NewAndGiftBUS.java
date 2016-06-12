@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hongoctuan.admin.ungdungxemphim.DTO.KhuyenMaiDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
-import com.hongoctuan.admin.ungdungxemphim.View.ChangeInfor;
 import com.hongoctuan.admin.ungdungxemphim.View.Detail_NewsAndGift;
-import com.hongoctuan.admin.ungdungxemphim.View.listNewAndGift_custom;
+import com.hongoctuan.admin.ungdungxemphim.View.Custom_listNewAndGift;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -87,7 +85,7 @@ public class NewAndGiftBUS extends AsyncTask<Void, Void, String> {
                 arrKhuyenMai.add(item);
             }
             ListView lvNewsAndGift = (ListView) context.findViewById(R.id.lvNewsAndGift);
-            listNewAndGift_custom adapter = new listNewAndGift_custom(context,R.layout.list_newandgift_custom,arrKhuyenMai);
+            Custom_listNewAndGift adapter = new Custom_listNewAndGift(context,R.layout.customadapter_listnewandgift,arrKhuyenMai);
             lvNewsAndGift.setAdapter(adapter);
             lvNewsAndGift.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

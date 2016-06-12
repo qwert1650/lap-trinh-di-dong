@@ -16,7 +16,7 @@ public class CommentCustomList extends ArrayAdapter<CommentDTO> {
     Activity context;
     ArrayList<CommentDTO> objects;
     public CommentCustomList(Activity context, int resource, ArrayList<CommentDTO> objects) {
-        super(context, R.layout.activity_binh_luan__custom_list, objects);
+        super(context, R.layout.customadapter_binhluan, objects);
         this.objects = objects;
         this.context = context;
     }
@@ -24,11 +24,11 @@ public class CommentCustomList extends ArrayAdapter<CommentDTO> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View view = inflater.inflate(R.layout.activity_binh_luan__custom_list, null, true);
+        View view = inflater.inflate(R.layout.customadapter_binhluan, null, true);
         TextView txt_nguoiBinhluan = (TextView) view.findViewById(R.id.txt_nguoiBinhluan);
-        txt_nguoiBinhluan.setText(objects.get(position).getCommenter());
+        txt_nguoiBinhluan.setText(objects.get(position).getNguoibinhluan()+" - "+objects.get(position).getThoigian());
         TextView txt_noidungBinhluan = (TextView) view.findViewById(R.id.txt_noidungBinhluan);
-        txt_noidungBinhluan.setText(objects.get(position).getContent());
+        txt_noidungBinhluan.setText(objects.get(position).getNoidung());
         ImageView iv_iconuser = (ImageView) view.findViewById(R.id.iv_iconuser);
         iv_iconuser.setImageResource(R.drawable.ic_user);
         return view;

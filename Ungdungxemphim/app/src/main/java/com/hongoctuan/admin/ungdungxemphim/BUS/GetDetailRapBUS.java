@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hongoctuan.admin.ungdungxemphim.R;
 import com.hongoctuan.admin.ungdungxemphim.View.ListLichChieu;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -79,15 +80,14 @@ public class GetDetailRapBUS extends AsyncTask<String,Void,String> {
             TextView txt_soghe = (TextView) context.findViewById(R.id.txt_soghe);
             TextView txt_sophone = (TextView) context.findViewById(R.id.txt_phonerap);
             ImageView iv_hinhrap = (ImageView) context.findViewById(R.id.iv_rap);
-            txt_tenrap.setText(jsonObject.getString("TenRap"));
+            txt_tenrap.setText("Rạp: "+jsonObject.getString("TenRap"));
             txt_ngaymo.setText("Ngày Mở: "+jsonObject.getString("NgayMo"));
             txt_sophong.setText("Phòng Chiếu: "+jsonObject.getString("SoPhongChieu"));
             txt_soghe.setText("Số Ghế: "+jsonObject.getString("SoGhe"));
             txt_sophone.setText("Hotline: " + jsonObject.getString("Phone"));
             String hinh= jsonObject.getString("HinhAnh");
             this.marap = jsonObject.getString("id");
-            GetImageDetailBUS getImageDetailBUS = new GetImageDetailBUS(context,iv_hinhrap);
-            getImageDetailBUS.execute(jsonObject.getString("HinhAnh"));
+            Picasso.with(context).load(jsonObject.getString("HinhAnh")).resize(300, 300).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_hinhrap);
             LatLng khtn_university = new LatLng(Double.parseDouble(jsonObject.getString("ViDo")),Double.parseDouble(jsonObject.getString("KinhDo").toString()));
             GoogleMap googleMap;
             googleMap = ((MapFragment)context.getFragmentManager().findFragmentById(R.id.map)).getMap();

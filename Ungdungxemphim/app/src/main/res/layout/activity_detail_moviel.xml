@@ -76,21 +76,29 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Xem Phim"
+                            android:layout_weight="1"
+                            android:text="Trailer"
                             android:id="@+id/btn_xemphim" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Share"
+                            android:id="@+id/btn_sharefb" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left">
@@ -99,9 +107,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:numStars="5"
-                    android:rating="3.5"
+                    android:stepSize="0.1"
                     android:id="@+id/ratingBar"
                     android:layout_alignParentLeft="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bình Chọn"
+                    android:id="@+id/btn_binhchon"
+                    android:layout_gravity="right" />
 
             </LinearLayout>
 
@@ -151,6 +166,8 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -167,7 +184,8 @@
                     android:hint="Bình luận"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#FFFFFF"
-                    android:id="@+id/editComment" />
+                    android:id="@+id/editComment"
+                    />
 
                 <Button
                     android:layout_width="match_parent"

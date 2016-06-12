@@ -12,19 +12,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hongoctuan.admin.ungdungxemphim.DTO.HoiDapDTO;
 import com.hongoctuan.admin.ungdungxemphim.DTO.LichChieuRapDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
 import com.hongoctuan.admin.ungdungxemphim.View.DatVe;
-import com.hongoctuan.admin.ungdungxemphim.View.ListLichChieu;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ExpandAdapter extends BaseExpandableListAdapter {
-	
+public class ExpandAdapter_HoiDap extends BaseExpandableListAdapter {
+
 	private Context context;
 	String[] item;
-	ArrayList<LichChieuRapDTO> listlichchieu;
-	public ExpandAdapter(Context context, String[] item, ArrayList<LichChieuRapDTO> listlichchieu) {
+	List<HoiDapDTO> listlichchieu;
+	public ExpandAdapter_HoiDap(Context context, String[] item, List<HoiDapDTO> listlichchieu) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.item = item;
@@ -40,13 +41,9 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-//		if(groupPosition == 0){
-//			return vehicles.length;
-//		}
-//		return devices.length;
 		int dem =0;
 		for(int i = 0; i < listlichchieu.size(); i++){
-			if(listlichchieu.get(i).getTenphim().equals(item[groupPosition])){
+			if(listlichchieu.get(i).getTieude().equals(item[groupPosition])){
 				dem++;
 			}
 		}
@@ -63,7 +60,6 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 					inflate(R.layout.layout_group_list, parent, false);
 		}
 		TextView textView = (TextView) v.findViewById(R.id.textGroup);
-
 		textView.setText(item[groupPosition]);
 		
 		int ic_arrow = isExpanded ? 
@@ -92,33 +88,19 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 		final Button btnitem = (Button) v.findViewById(R.id.text);
 		int dem =0;
 		for(int i = 0; i < listlichchieu.size(); i++){
-			if(listlichchieu.get(i).getTenphim().equals(item[groupPosition])){
+			if(listlichchieu.get(i).getTieude().equals(item[groupPosition])){
 				dem++;
 			}
 		}
-		String[] arrtenphim = new String[dem];
-		final String[] malichchieu = new String[dem];
+		String[] noidung = new String[dem];
 		int k =0;
 		for(int i = 0; i < listlichchieu.size(); i++){
-			if(listlichchieu.get(i).getTenphim().equals(item[groupPosition])){
-				arrtenphim[k] = listlichchieu.get(i).getKythuat() +"D - "+ "Thời gian ("+listlichchieu.get(i).getThoigianchieu()+ ") - Giá vé: " + listlichchieu.get(i).getGiave();
-				malichchieu[k]= listlichchieu.get(i).getMalichchieu();
+			if(listlichchieu.get(i).getTieude().equals(item[groupPosition])){
+				noidung[k] = listlichchieu.get(i).getNoidung();
 				k++;
 			}
 		}
-		btnitem.setText(arrtenphim[childPosition]);
-		btnitem.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(context, DatVe.class);
-				Bundle bundle = new Bundle();
-				bundle.putString("info", btnitem.getText().toString());
-				bundle.putString("tenphim", item[groupPosition]);
-				bundle.putString("malichchieu",malichchieu[childPosition]);
-				intent.putExtra("myData",bundle);
-				context.startActivity(intent);
-			}
-		});
+		btnitem.setText(noidung[childPosition]);
 		return v;
 	}
 

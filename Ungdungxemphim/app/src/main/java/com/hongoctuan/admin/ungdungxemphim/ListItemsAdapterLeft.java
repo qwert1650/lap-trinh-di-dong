@@ -60,10 +60,12 @@ public class ListItemsAdapterLeft extends ArrayAdapter<Object>
         holder1=new ViewHolder();
         holder1.text=(TextView)convertView.findViewById(R.id.txtData);
         holder1.iv=(ImageView)convertView.findViewById(R.id.imgView);
+        ImageView ic_lineblack = (ImageView) convertView.findViewById(R.id.imageView6);
         convertView.setTag(holder1);
         String text=dataArray_left.get(position);
         holder1.text.setText(dataArray_left.get(position));
         holder1.iv.setBackgroundResource(menu[position]);
+        ic_lineblack.setImageResource(R.drawable.ic_lineblack);
         return convertView;
     }
 }

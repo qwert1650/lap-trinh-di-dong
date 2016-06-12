@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@color/colorBlack"
     tools:context="com.hongoctuan.admin.ungdungxemphim.View.ListRap">
 
     <ListView
@@ -11,6 +12,12 @@
         android:layout_height="match_parent"
         android:id="@+id/lv_vung"
         android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:id="@+id/imageView3" />
 
     <ListView
         android:layout_width="match_parent"

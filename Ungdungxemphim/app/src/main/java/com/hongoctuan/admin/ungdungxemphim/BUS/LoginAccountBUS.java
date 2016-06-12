@@ -1,9 +1,14 @@
 package com.hongoctuan.admin.ungdungxemphim.BUS;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hongoctuan.admin.ungdungxemphim.DTO.AccountDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
@@ -70,8 +75,7 @@ public class LoginAccountBUS extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s.equals("null")) {
-            TextView txtNotification = (TextView) context.findViewById(R.id.txtNotification);
-            txtNotification.setText("Tên đăng nhập, mật khẩu không chính xác!");
+            Toast.makeText(context, "Tên đăng nhập, mật khẩu không chính xác!", Toast.LENGTH_SHORT).show();
         }
         else{
             AccountDTO user = new AccountDTO();
@@ -87,6 +91,10 @@ public class LoginAccountBUS extends AsyncTask<String, Void, String> {
                 editor.clear();
                 editor.putString("idname", jsonUser.getString("id"));
                 editor.putString("username", jsonUser.getString("name"));
+                editor.putString("cmnd", jsonUser.getString("cmnd"));
+                editor.putString("phone", jsonUser.getString("phone"));
+                editor.putString("gioitinh", jsonUser.getString("gioitinh"));
+                editor.putString("tuoi", jsonUser.getString("tuoi"));
                 editor.commit();
             } catch (JSONException e) {
                 e.printStackTrace();

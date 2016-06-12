@@ -3,8 +3,13 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,15 +18,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.hongoctuan.admin.ungdungxemphim.BUS.RealPathUtil;
+import com.hongoctuan.admin.ungdungxemphim.BUS.UserPicture;
 import com.hongoctuan.admin.ungdungxemphim.View.Contact;
-import com.hongoctuan.admin.ungdungxemphim.View.GoiYSearchFragment;
 import com.hongoctuan.admin.ungdungxemphim.View.HuyVe;
 import com.hongoctuan.admin.ungdungxemphim.View.Introduce;
 import com.hongoctuan.admin.ungdungxemphim.View.LichSuMuaVe;
@@ -29,15 +34,14 @@ import com.hongoctuan.admin.ungdungxemphim.View.ListRap;
 import com.hongoctuan.admin.ungdungxemphim.View.MainFragment;
 import com.hongoctuan.admin.ungdungxemphim.View.NewsAndGift;
 import com.hongoctuan.admin.ungdungxemphim.View.Question;
-import com.hongoctuan.admin.ungdungxemphim.View.SearchFragment;
 import com.hongoctuan.admin.ungdungxemphim.DAO.DatabaseHelper;
-import com.hongoctuan.admin.ungdungxemphim.View.TypeMovie;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity{
     DatabaseHelper db;
-
+    ImageView ivtemp;
     ArrayList<String> dataArray_right=new ArrayList<String>();
     ArrayList<Object> objectArray_right=new ArrayList<Object>();
     ArrayList<String> dataArray_left=new ArrayList<String>();
@@ -65,15 +69,7 @@ public class MainActivity extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        iv_timkiem = (ImageView) findViewById(R.id.iv_timkiem);
-        iv_back = (ImageView) findViewById(R.id.iv_back);
         db= new DatabaseHelper(this);
-        list_autoSearch = db.getDanhSachPhim();
-        auto_Search = (AutoCompleteTextView) findViewById(R.id.autoCompleteSearch);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list_autoSearch);
-
-        auto_Search.setAdapter(adapter);
-        auto_Search.setThreshold(1);
 
         loadTrangChu();
         //===============Initialization of Variables=========================//
@@ -170,33 +166,6 @@ public class MainActivity extends ActionBarActivity{
         Fill_RightList();
         RefreshListView();
         db = new DatabaseHelper(this);
-
-        iv_timkiem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv_back.setVisibility(View.VISIBLE);
-                auto_Search.setPadding(50, 0, 50, 0);
-                db.insertLichSu(auto_Search.getText().toString());
-                loadTimKiem();
-            }
-        });
-        iv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv_back.setVisibility(View.GONE);
-                auto_Search.setPadding(10, 0, 50, 0);
-                loadTrangChu();
-            }
-        });
-
-        auto_Search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv_back.setVisibility(View.VISIBLE);
-                auto_Search.setPadding(50, 0, 50, 0);
-                loadGoiYSeach(auto_Search.getText().toString());
-            }
-        });
     }
 
 
@@ -216,7 +185,12 @@ public class MainActivity extends ActionBarActivity{
             objectArray_right.add(obj);
         }
         Log.d("object array", "" + objectArray_right.size());
-        Right_Adapter = new ListItemsAdapterRight(this,objectArray_right, 1,dataArray_right);
+        Right_Adapter = new ListItemsAdapterRight(this,objectArray_right, 1,dataArray_right, new ListItemsAdapterRight.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, ImageView icon) {
+                ivtemp = icon;
+            }
+        });
         mDrawerList_Right.setAdapter(Right_Adapter);
     }
     public void Fill_LeftList()
@@ -245,15 +219,41 @@ public class MainActivity extends ActionBarActivity{
         fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).commit();
     }
 
-    public void loadTimKiem() {
-        Fragment fragment = new SearchFragment(this,auto_Search.getText().toString());
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).commit();
-    }
+    @Override
 
-    public void loadGoiYSeach(String keyword){
-        Fragment fragment = new GoiYSearchFragment(this,auto_Search.getText().toString());
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.mainFragment, fragment).commit();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 101) {
+                Uri selectedImageUri = data.getData();
+                try {
+                    ivtemp.setImageBitmap(new UserPicture(selectedImageUri, getContentResolver()).getBitmap());
+                    saveSharedPreferences(getPathLibrary(selectedImageUri));
+                } catch (IOException e) {
+                    Log.e(MainActivity.class.getSimpleName(), "Failed to load image", e);
+                }
+            }
+        }
+        else {
+            Toast.makeText(getApplicationContext(), R.string.msg_failed_to_get_intent_data, Toast.LENGTH_LONG).show();
+        }
+    }
+    private String getPathLibrary(Uri _uri){
+        String realPath;
+        if (Build.VERSION.SDK_INT < 11)
+            realPath = RealPathUtil.getRealPathFromURI_BelowAPI11(this, _uri);
+
+            // SDK >= 11 && SDK < 19
+        else if (Build.VERSION.SDK_INT < 19)
+            realPath = RealPathUtil.getRealPathFromURI_API11to18(this, _uri);
+            // SDK > 19 (Android 4.4)
+        else
+            realPath = RealPathUtil.getRealPathFromURI_API19(this, _uri);
+        return realPath;
+    }
+    private void saveSharedPreferences(String link){
+        SharedPreferences sharedPreferences = getSharedPreferences("ProfileImage", MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putString("URI",link);
+        editor.commit();
     }
 }

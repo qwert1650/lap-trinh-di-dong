@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Ungdungxemphim</string>
-    <string name="quenmatkhau"><u>Quên Mật Khẩu</u></string>
     <string name="noidungphim"><b><u>Nội Dung Phim</u></b></string>
     <string name="binhchon"><b><u>Bình Chọn:</u></b></string>
     <string name="player_error">Error initializing YouTube player</string>
     <string name="hello_world">Hello world!</string>
     <string name="arrowDesc">Arrow Description</string>
+    <string name="select_picture">Select Picture</string>
+    <string name="msg_failed_to_get_intent_data">Failed to get intent data</string>
 </resources>

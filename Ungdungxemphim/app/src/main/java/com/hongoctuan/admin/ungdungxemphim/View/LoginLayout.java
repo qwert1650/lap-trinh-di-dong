@@ -1,8 +1,18 @@
 package com.hongoctuan.admin.ungdungxemphim.View;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -30,7 +40,6 @@ public class LoginLayout {
         ImageView ivIcon = new ImageView(context);
         LinearLayout ll = (LinearLayout)context.findViewById(R.id.line_loginlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        ivIcon.setImageResource(R.drawable.ic_home);
         ll.addView(ivIcon, lp);
         //them textview ten dang nhap
         TextView txtTendangnhap = new TextView(context);
@@ -49,64 +58,77 @@ public class LoginLayout {
         btnLogout.setText("Nhap");
         ll.addView(btnLogout, lp);
     }
-
     public void updateloginAccout(){
         LinearLayout ll = (LinearLayout)context.findViewById(R.id.line_loginlayout);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        ImageView ivLogin= new ImageView(context);
-        //them imageview  icon login
-        ivLogin.setImageResource(R.drawable.login);
-        ivLogin.setId(R.id.iv_login);
-        ll.addView(ivLogin, lp);
-        //them textview thong bao
-        TextView txtNotification= new TextView(context);
-        txtNotification.setId(R.id.txtNotification);
-        txtNotification.setText("");
-        ll.addView(txtNotification, lp);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         //them textview ten dang nhap
         TextView txtTendangnhap= new TextView(context);
         txtTendangnhap.setText("Tên Đăng Nhập:");
         txtTendangnhap.setId(R.id.txt_tendangnhap);
         ll.addView(txtTendangnhap, lp);
+        //them edittext ten dang nhap
+        //them edittext ten dang nhap
+        final EditText editTendangnhap=new EditText(context);
+        editTendangnhap.setHint("Nhập username");
+        editTendangnhap.setId(R.id.eidt_tendangnhap);
+        ll.addView(editTendangnhap, lp);
         //them textview mat khau
         TextView txtMatkhau= new TextView(context);
         txtMatkhau.setText("Mật Khẩu:");
         txtMatkhau.setId(R.id.txt_matkhau);
         ll.addView(txtMatkhau, lp);
-        //them edittext ten dang nhap
-        final EditText editTendangnhap=new EditText(context);
-        editTendangnhap.setHint("Nhập Tên Đăng Nhập");
-        editTendangnhap.setId(R.id.eidt_tendangnhap);
-        ll.addView(editTendangnhap, lp);
         //them edittext mat khau
         final EditText editMatkhau = new EditText(context);
-        editMatkhau.setHint("Nhập Mật Khẩu");
-        editMatkhau.setId(R.id.edit_matkhau);
-        ll.addView(editMatkhau, lp);
+        editMatkhau.setId(R.id.edit_password);
+        editMatkhau.setHint("Nhập password");
+        editMatkhau.setSingleLine();
+        ll.addView(editMatkhau,lp);
         //them button login
         Button btnLogin =  new Button(context);
         btnLogin.setText("Đăng Nhập");
-        btnLogin.setId(R.id.btn_login);
+        btnLogin.setId(R.id.btn_logins);
+        btnLogin.isClickable();
+        btnLogin.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
+        btnLogin.setPadding(20, 20, 20, 20);
         ll.addView(btnLogin, lp);
         //them button login facebook
         Button btnLoginfacebook = new Button(context);
         btnLoginfacebook.setText("Đăng Nhập Facebook");
+        btnLoginfacebook.isClickable();
+        btnLoginfacebook.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
         btnLoginfacebook.setId(R.id.btn_loginfacebook);
+        btnLoginfacebook.setPadding(20,20,20,20);
         ll.addView(btnLoginfacebook, lp);
         //them textview register
         TextView txtRegister = new TextView(context);
         txtRegister.setText("Đăng Ký Tài Khoản");
         txtRegister.setId(R.id.txt_dangkytaikhoan);
+        lp.setMargins(5, 5, 5, 5);
+        txtRegister.setBackgroundColor(Color.WHITE);
+        txtRegister.isClickable();
+        txtRegister.setPadding(20, 20, 20, 20);
+        txtRegister.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        txtRegister.setTypeface(null, Typeface.BOLD);
         ll.addView(txtRegister,lp);
         //them textview quen mat khau
         TextView txtQuenmatkhau= new TextView(context);
         txtQuenmatkhau.setText("Quên Mật Khẩu");
+        lp.setMargins(5, 5, 5, 5);
         txtQuenmatkhau.setId(R.id.txt_quenmatkhau);
+        txtQuenmatkhau.setBackgroundColor(Color.WHITE);
+        txtQuenmatkhau.isClickable();
+        txtQuenmatkhau.setPadding(20, 20, 20, 20);
+        txtQuenmatkhau.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        txtQuenmatkhau.setTypeface(null, Typeface.BOLD);
         ll.addView(txtQuenmatkhau, lp);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginAccount(editTendangnhap.getText().toString(), editMatkhau.getText().toString());
+                String username = editTendangnhap.getText().toString();
+                String pass =editMatkhau.getText().toString();
+                loginAccount(username,pass);
             }
         });
         txtRegister.setOnClickListener(new View.OnClickListener() {
@@ -126,21 +148,6 @@ public class LoginLayout {
     }
 
     public void removeloginAccount(){
-        //xoa button login
-        Button btnLogin = (Button) context.findViewById(R.id.btn_login);
-        ViewGroup btnLoginlayout = (ViewGroup)btnLogin.getParent();
-        if(null!=btnLoginlayout) //for safety only  as you are doing onClick
-            btnLoginlayout.removeView(btnLogin);
-        //xoa imageview login
-        ImageView ivLogin= (ImageView) context.findViewById(R.id.iv_login);
-        ViewGroup ivLoginlayout = (ViewGroup)ivLogin.getParent();
-        if(null!=ivLoginlayout) //for safety only  as you are doing onClick
-            ivLoginlayout.removeView(ivLogin);
-        //xoa textview notification
-        TextView txtNotification= (TextView) context.findViewById(R.id.txtNotification);
-        ViewGroup txtNotificationlayout = (ViewGroup)txtNotification.getParent();
-        if(null!= txtNotificationlayout) //for safety only  as you are doing onClick
-            txtNotificationlayout.removeView(txtNotification);
         //xoa textview name
         TextView txtTendangnhap = (TextView) context.findViewById(R.id.txt_tendangnhap);
         ViewGroup txtTendangnhaplayout = (ViewGroup)txtTendangnhap.getParent();
@@ -157,7 +164,7 @@ public class LoginLayout {
         if(null!= editTendangnhaplayout) //for safety only  as you are doing onClick
             editTendangnhaplayout.removeView(editTendangnhap);
         //xoa edittext pass
-        EditText editMatkhau = (EditText) context.findViewById(R.id.edit_matkhau);
+        EditText editMatkhau = (EditText) context.findViewById(R.id.edit_password);
         ViewGroup editMatkhaulayout = (ViewGroup)editMatkhau.getParent();
         if(null!= editMatkhaulayout) //for safety only  as you are doing onClick
             editMatkhaulayout.removeView(editMatkhau);
@@ -176,6 +183,11 @@ public class LoginLayout {
         ViewGroup txtQuenmatkhaulayout = (ViewGroup)txtQuenmatkhau.getParent();
         if(null!= txtQuenmatkhaulayout) //for safety only  as you are doing onClick
             txtQuenmatkhaulayout.removeView(txtQuenmatkhau);
+        //xoa button login
+        Button btnLogin = (Button) context.findViewById(R.id.btn_logins);
+        ViewGroup btnLoginlayout = (ViewGroup)btnLogin.getParent();
+        if(null!=btnLoginlayout) //for safety only  as you are doing onClick
+            btnLoginlayout.removeView(btnLogin);
     }
     private void loginAccount(String name, String pass){
         LoginAccountBUS loginAccount_bus = new LoginAccountBUS(context);
@@ -185,39 +197,51 @@ public class LoginLayout {
     //update layout when login success.
     public void updateLogginSuccesLayout(final AccountDTO user){
         username = user.getAccountName();
+        TextView txt_user_profile_name = (TextView) context.findViewById(R.id.user_profile_name);
+        txt_user_profile_name.setText(username);
         //them imageview icon
         final ImageView ivIcon = new ImageView(context);
         LinearLayout ll = (LinearLayout)context.findViewById(R.id.line_loginlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        ivIcon.setImageResource(R.drawable.ic_home);
-        ll.addView(ivIcon, lp);
-        //them textview ten dang nhap
-        final TextView txtTendangnhap = new TextView(context);
-        txtTendangnhap.setText(user.getAccountName());
-        ll.addView(txtTendangnhap, lp);
         //them button doi thong tin.
         final Button btnChangeInfor = new Button(context);
         btnChangeInfor.setText("Đổi Thông Tin");
+        btnChangeInfor.isClickable();
+        btnChangeInfor.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
+        btnChangeInfor.setPadding(20, 20, 20, 20);
         ll.addView(btnChangeInfor, lp);
-        //them button dang xuat
+        //them button doi mat khau
         final Button btnChangePass = new Button(context);
         btnChangePass.setText("Đổi Mật Khẩu");
+        btnChangePass.isClickable();
+        btnChangePass.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
+        btnChangePass.setPadding(20, 20, 20, 20);
         ll.addView(btnChangePass, lp);
         //them button dang xuat
         final Button btnLogout = new Button(context);
         btnLogout.setText("Đăng Xuất");
+        btnLogout.isClickable();
+        btnLogout.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
+        btnLogout.setPadding(20, 20, 20, 20);
         ll.addView(btnLogout, lp);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TextView txt_accountname = (TextView)context.findViewById(R.id.user_profile_name);
+                txt_accountname.setText("Account Name");
+                SharedPreferences pre= context.getSharedPreferences("ungdungxemphim", context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=pre.edit();
+                editor.clear();
+                editor.putString("idname", "");
+                editor.putString("username", "");
+                editor.commit();
                 ViewGroup ivIconlayout = (ViewGroup) ivIcon.getParent();
                 if (null != ivIconlayout) //for safety only  as you are doing onClick
                     ivIconlayout.removeView(ivIcon);
-
-                ViewGroup txtTendangnhaplayout = (ViewGroup) txtTendangnhap.getParent();
-                if (null != ivIconlayout) //for safety only  as you are doing onClick
-                    txtTendangnhaplayout.removeView(txtTendangnhap);
 
                 ViewGroup btnLogoutlayout = (ViewGroup) btnLogout.getParent();
                 if (null != btnLogoutlayout) //for safety only  as you are doing onClick

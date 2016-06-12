@@ -1,10 +1,13 @@
 package com.hongoctuan.admin.ungdungxemphim.View;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -27,17 +30,21 @@ public class registerLayout  {
         LinearLayout ll = (LinearLayout) context.findViewById(R.id.line_loginlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         //them title dang ky tai khoan
-        final TextView txtRegister = new TextView(context);
-        txtRegister.setText("Đăng ký tài khoản");
-        txtRegister.setTextSize(20);
-        ll.addView(txtRegister, lp);
+//        final TextView txtRegister = new TextView(context);
+//        txtRegister.setText("Đăng ký tài khoản");
+//        txtRegister.setTextSize(20);
+//        ll.addView(txtRegister, lp);
+        TextView txt_user_profile_name = (TextView) context.findViewById(R.id.user_profile_name);
+        txt_user_profile_name.setText("Đăng ký tài khoản");
+        ImageView iv_register = (ImageView) context.findViewById(R.id.iv_login);
+        iv_register.setImageResource(R.drawable.ic_register);
         //them textview ten dang nhap
         final TextView txtTendangnhap = new TextView(context);
         txtTendangnhap.setText("Tên đăng nhập:");
         ll.addView(txtTendangnhap, lp);
         //them edittext ten dang nhap
         final EditText editTendangnhap = new EditText(context);
-        txtTendangnhap.setHint("Nhập tên đăng nhập");
+        editTendangnhap.setHint("Nhập tên đăng nhập");
         ll.addView(editTendangnhap,lp);
         //them textview pass
         final TextView txtPass = new TextView(context);
@@ -62,7 +69,7 @@ public class registerLayout  {
         //them edittext phone
         final EditText editPhone = new EditText(context);
         editPhone.setHint("Nhập điện thoại");
-        ll.addView(editPhone,lp);
+        ll.addView(editPhone, lp);
         //them textview gioi tinh
         final TextView txtGioitinh = new TextView(context);
         txtGioitinh.setText("Giới tính");
@@ -90,11 +97,25 @@ public class registerLayout  {
         //them edittext tuoi
         final EditText editTuoi = new EditText(context);
         editTuoi.setHint("Nhập tuổi");
-        ll.addView(editTuoi,lp);
+        ll.addView(editTuoi, lp);
         //them button đang ky
         final Button btnDangky = new Button(context);
         btnDangky.setText("Đăng Ký");
+        btnDangky.isClickable();
+        btnDangky.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
+        btnDangky.setElevation(4);
+        btnDangky.setPadding(20, 20, 20, 20);
         ll.addView(btnDangky, lp);
+        //them button login
+        final Button btnLogin = new Button(context);
+        btnLogin.setText("Đăng Nhập");
+        btnLogin.isClickable();
+        btnLogin.setBackgroundColor(Color.WHITE);
+        lp.setMargins(5, 5, 5, 5);
+        btnLogin.setElevation(4);
+        btnLogin.setPadding(20, 20, 20, 20);
+        ll.addView(btnLogin, lp);
         //bat su kien check radio Nam
         rbNam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +136,73 @@ public class registerLayout  {
                 }
             }
         });
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewGroup txtTendangnhapParent = (ViewGroup)txtTendangnhap.getParent();
+                if(null!=txtTendangnhapParent) //for safety only  as you are doing onClick
+                    txtTendangnhapParent.removeView(txtTendangnhap);
+                //xoa edittext ten dang nhap
+                ViewGroup editTendangnhapParent = (ViewGroup)editTendangnhap.getParent();
+                if(null!=editTendangnhapParent) //for safety only  as you are doing onClick
+                    editTendangnhapParent.removeView(editTendangnhap);
+                //xoa textview mat khau
+                ViewGroup txtPassParent = (ViewGroup)txtPass.getParent();
+                if(null!=txtPassParent) //for safety only  as you are doing onClick
+                    txtPassParent.removeView(txtPass);
+                //xoa edittext mat khau
+                ViewGroup editMatkhauParent = (ViewGroup)editMatkhau.getParent();
+                if(null!=editMatkhauParent) //for safety only  as you are doing onClick
+                    editMatkhauParent.removeView(editMatkhau);
+                //xoa textview cmnd
+                ViewGroup txtCmndParent = (ViewGroup)txtCmnd.getParent();
+                if(null!=txtCmndParent) //for safety only  as you are doing onClick
+                    txtCmndParent.removeView(txtCmnd);
+                //xoa edittext cmnd
+                ViewGroup editCmndParent = (ViewGroup)editCmnd.getParent();
+                if(null!=editCmndParent) //for safety only  as you are doing onClick
+                    editCmndParent.removeView(editCmnd);
+                //xoa textview phone
+                ViewGroup txtPhoneParent = (ViewGroup)txtPhone.getParent();
+                if(null!=txtPhoneParent) //for safety only  as you are doing onClick
+                    txtPhoneParent.removeView(txtPhone);
+                //xoa edittext cmnd
+                ViewGroup editPhoneParent = (ViewGroup)editPhone.getParent();
+                if(null!=editPhoneParent) //for safety only  as you are doing onClick
+                    editPhoneParent.removeView(editPhone);
+                //xoa textview gioi tinh
+                ViewGroup txtGioitinhParent = (ViewGroup)txtGioitinh.getParent();
+                if(null!=txtGioitinhParent) //for safety only  as you are doing onClick
+                    txtGioitinhParent.removeView(txtGioitinh);
+                //xoa radio nam
+                ViewGroup rbNamParent = (ViewGroup)rbNam.getParent();
+                if(null!=rbNamParent) //for safety only  as you are doing onClick
+                    rbNamParent.removeView(rbNam);
+                //xoa radio nu
+                ViewGroup rbNuParent = (ViewGroup)rbNu.getParent();
+                if(null!=rbNuParent) //for safety only  as you are doing onClick
+                    rbNuParent.removeView(rbNu);
+                //xoa textview tuoi
+                ViewGroup txtTuoiParent = (ViewGroup)txtTuoi.getParent();
+                if(null!=txtTuoiParent) //for safety only  as you are doing onClick
+                    txtTuoiParent.removeView(txtTuoi);
+                //xoa edittext tuoi
+                ViewGroup editTuoiParent = (ViewGroup)editTuoi.getParent();
+                if(null!=editTuoiParent) //for safety only  as you are doing onClick
+                    editTuoiParent.removeView(editTuoi);
+                //xoa button dang ky
+                ViewGroup btnDangkyParent = (ViewGroup)btnDangky.getParent();
+                if(null!=btnDangkyParent) //for safety only  as you are doing onClick
+                    btnDangkyParent.removeView(btnDangky);
+                //xoa button dang ky
+                ViewGroup btnLoginParent = (ViewGroup)btnLogin.getParent();
+                if(null!=btnDangkyParent) //for safety only  as you are doing onClick
+                    btnLoginParent.removeView(btnLogin);
+                LoginLayout loginLayout = new LoginLayout(context);
+                loginLayout.updateloginAccout();
+
+            }
+        });
         //bat su kien dang ky
         btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,15 +220,6 @@ public class registerLayout  {
                 }
                 RegisterAccountBUS registerAccountBUS = new RegisterAccountBUS(context);
                 registerAccountBUS.execute(user);
-
-
-                //xoa giao dien register
-                //xoa title register
-                //xoa textview login
-                ViewGroup txtRegisterParent = (ViewGroup)txtRegister.getParent();
-                if(null!=txtRegisterParent) //for safety only  as you are doing onClick
-                    txtRegisterParent.removeView(txtRegister);
-                //xoa textview ten dang nhap
                 ViewGroup txtTendangnhapParent = (ViewGroup)txtTendangnhap.getParent();
                 if(null!=txtTendangnhapParent) //for safety only  as you are doing onClick
                     txtTendangnhapParent.removeView(txtTendangnhap);

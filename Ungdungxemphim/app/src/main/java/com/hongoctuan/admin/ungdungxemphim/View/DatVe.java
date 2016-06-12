@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.hongoctuan.admin.ungdungxemphim.BUS.MyAdapterGridView;
 import com.hongoctuan.admin.ungdungxemphim.BUS.interface_getdatve;
@@ -18,10 +17,7 @@ import retrofit.Call;
 import retrofit.Callback;
 import retrofit.GsonConverterFactory;
 import retrofit.Response;
-//import retrofit.RestAdapter;
 import retrofit.Retrofit;
-//import retrofit.RetrofitError;
-//import retrofit.client.Response;
 
 public class DatVe extends AppCompatActivity {
 
@@ -32,9 +28,7 @@ public class DatVe extends AppCompatActivity {
         setContentView(R.layout.activity_dat_ve);
         Intent intent = getIntent();
         Bundle packageFromCaller= intent.getBundleExtra("myData");
-        //String tenrap = packageFromCaller.getString("info");
         String malichchieu = packageFromCaller.getString("malichchieu");
-        Toast.makeText(this,malichchieu.toString(),Toast.LENGTH_SHORT).show();
         gv_sodo = (GridView) findViewById(R.id.gv_sodo);
         final ArrayList<DatGheDTO> arr = new ArrayList<DatGheDTO>();
         for(int i = 0; i < 10; i++){
@@ -60,9 +54,7 @@ public class DatVe extends AppCompatActivity {
                 for (int i = 0; i < response.body().size(); i++) {
                     result.add(response.body().get(i));
                 }
-                //Toast.makeText(getApplicationContext(),result.toString()+"- gia tri:"+response.body().size(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), result.toString() + "-ke qua", Toast.LENGTH_SHORT).show();
-                MyAdapterGridView ad = new MyAdapterGridView(getApplicationContext(), R.layout.layout_sodo_custom, arr, result);
+                MyAdapterGridView ad = new MyAdapterGridView(getApplicationContext(), R.layout.customadapter_sodorap, arr, result);
                 gv_sodo.setAdapter(ad);
             }
 

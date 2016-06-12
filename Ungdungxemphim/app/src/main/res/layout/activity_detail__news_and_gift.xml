@@ -3,47 +3,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:background="@color/colorBlack"
     tools:context="com.hongoctuan.admin.ungdungxemphim.View.Detail_NewsAndGift">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:scaleType="fitXY"
         android:id="@+id/ivDetailKM" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/txtDetailTenKM" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/txtDetailNgayKM" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/txtDetailTenKM" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/txtDetailNoiDungKM" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/txtDetailNgayKM" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Điều kiện áp dụng:"
-        android:id="@+id/textView12" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/txtDetailNoiDungKM" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/txtDetailDieuKienKM" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điều kiện áp dụng:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/textView12" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/txtDetailGhiChuKM" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/txtDetailDieuKienKM" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlue"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/txtDetailGhiChuKM" />
+    </LinearLayout>
+
 </LinearLayout>

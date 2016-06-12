@@ -88,7 +88,7 @@ public class GetLichChieuRapBUS extends AsyncTask<String,Void,String> {
 
         listView.setGroupIndicator(null);
 
-        ExpandAdapter adapter = new ExpandAdapter(context, item,listlichchieu);
+        ExpandAdapter_LichChieu adapter = new ExpandAdapter_LichChieu(context, item,listlichchieu);
 
         listView.setAdapter(adapter);
     }

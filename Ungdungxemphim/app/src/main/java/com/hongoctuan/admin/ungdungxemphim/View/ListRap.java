@@ -46,7 +46,9 @@ public class ListRap extends AppCompatActivity {
         dostart("all");
         final DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
         final ArrayList<String> listrap = databaseHelper.getListRap();
-        final ArrayAdapter<String> adapterrap = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listrap);
+//        final ArrayAdapter<String> adapterrap = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listrap);
+//        lv_rap.setAdapter(adapterrap);
+        final CustomAdapter_ListRap adapterrap = new CustomAdapter_ListRap(getApplicationContext(),R.layout.customadapter_listrap,listrap);
         lv_rap.setAdapter(adapterrap);
         lv_rap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -61,7 +63,9 @@ public class ListRap extends AppCompatActivity {
 
         DatabaseHelper dbVung = new DatabaseHelper(getApplicationContext());
         ArrayList<String> listvung = dbVung.getVung();
-        ArrayAdapter<String> adaptervung = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,listvung);
+        //ArrayAdapter<String> adaptervung = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,listvung);
+        //lv_vung.setAdapter(adaptervung);
+        CustomAdapter_ListVung adaptervung = new CustomAdapter_ListVung(getApplicationContext(),R.layout.customadapter_listvung,listvung);
         lv_vung.setAdapter(adaptervung);
 
         lv_vung.setOnItemClickListener(new AdapterView.OnItemClickListener() {

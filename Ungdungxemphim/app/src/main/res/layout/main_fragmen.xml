@@ -40,23 +40,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Phim hành động:"
+                            android:text="Phim đang chiếu:"
                             android:textColor="@color/colorBlue"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:layout_weight="1"
                             android:id="@+id/textView5" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:text="Tất cả"
-                            android:textColor="@color/colorBlue"
-                            android:layout_marginRight="10dp"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:id="@+id/txt_hdTatca" />
                     </LinearLayout>
 
                     <HorizontalScrollView
@@ -341,23 +331,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Phim hoạt hình:"
+                            android:text="Phim sắp chiếu:"
                             android:textColor="@color/colorBlue"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:layout_weight="1"
                             android:id="@+id/textView18" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:text="Tất cả"
-                            android:textColor="@color/colorBlue"
-                            android:layout_marginRight="10dp"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:id="@+id/txt_hhTatca" />
                     </LinearLayout>
 
                     <HorizontalScrollView
@@ -640,23 +620,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Phim giả tưởng:"
+                            android:text="Phim bom tấn:"
                             android:textColor="@color/colorBlue"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:layout_weight="1"
                             android:id="@+id/textView20" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:text="Tất cả"
-                            android:textColor="@color/colorBlue"
-                            android:layout_marginRight="10dp"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:id="@+id/txt_gtTatca" />
                     </LinearLayout>
 
                     <HorizontalScrollView

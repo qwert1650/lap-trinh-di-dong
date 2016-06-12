@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hongoctuan.admin.ungdungxemphim.DTO.MovieDTO;
 import com.hongoctuan.admin.ungdungxemphim.R;
@@ -67,7 +68,7 @@ public class GetMoviesDetailBUS extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         item = new MovieDTO();
-        final ArrayList<MovieDTO> arrMovie = new ArrayList<MovieDTO>();
+//        final ArrayList<MovieDTO> arrMovie = new ArrayList<MovieDTO>();
         try {
             JSONObject json_data = new JSONObject(s);
             item.setMovieId(json_data.getString("id"));
@@ -79,7 +80,7 @@ public class GetMoviesDetailBUS extends AsyncTask<String,Void,String> {
             item.setCategory(json_data.getString("theloai"));
             item.setMovieUrl(json_data.getString("urlTrail"));
             item.setUrlImage(json_data.getString("urlImage"));
-            arrMovie.add(item);
+//            arrMovie.add(item);
         } catch (JSONException e1) {
             e1.printStackTrace();
         }
@@ -93,7 +94,6 @@ public class GetMoviesDetailBUS extends AsyncTask<String,Void,String> {
         Button btn_datve2d = (Button)context.findViewById(R.id.btn_datve2d);
         Button btn_datve3d = (Button)context.findViewById(R.id.btn_datve3d);
         Picasso.with(context).load(item.getUrlImage()).resize(250, 500).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(iv_poster);
-//        getImageDetailBUS.execute(item.getUrlImage());
         txt_MovieName.setText(item.getMovieName());
         txt_DirectorName.setText("Đạo Diễn: " + item.getDirectorName());
         txt_Actor.setText("Diễn Viên: "+item.getActor());
@@ -111,23 +111,32 @@ public class GetMoviesDetailBUS extends AsyncTask<String,Void,String> {
         btn_datve2d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BookTicket.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("maphim", item);
-                bundle.putString("kythuat","2");
-                intent.putExtra("myData", bundle);
-                context.startActivity(intent);
+                if(item.getMovieId().indexOf("hh")==-1) {
+                    Intent intent = new Intent(context, BookTicket.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("maphim", item);
+                    bundle.putString("kythuat", "2");
+                    intent.putExtra("myData", bundle);
+                    context.startActivity(intent);
+                }
+                else{
+                    Toast.makeText(context,"Phim này chưa được khởi chiếu vui long đợi!!!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btn_datve3d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BookTicket.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("maphim", item);
-                bundle.putString("kythuat","3");
-                intent.putExtra("myData", bundle);
-                context.startActivity(intent);
+                if(item.getMovieId().indexOf("hh")==-1) {
+                    Intent intent = new Intent(context, BookTicket.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("maphim", item);
+                    bundle.putString("kythuat", "3");
+                    intent.putExtra("myData", bundle);
+                    context.startActivity(intent);
+                }else{
+                    Toast.makeText(context,"Phim này chưa được khởi chiếu vui long đợi!!!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -29,29 +29,34 @@ public class LichSuMuaVe extends AppCompatActivity {
         setContentView(R.layout.activity_lich_su_mua_ve);
         SharedPreferences pre=getSharedPreferences("ungdungxemphim", MODE_PRIVATE);
         final String temp = pre.getString("username", "");
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://restfullapiservice.somee.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        if(!temp.equals("")) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://restfullapiservice.somee.com")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        interface_getdatve rest = retrofit.create(interface_getdatve.class);
-        Call<List<VeDTO>> call = rest.loadlichsudatve(temp);
-        call.enqueue(new Callback<List<VeDTO>>() {
-            @Override
-            public void onResponse(Response<List<VeDTO>> response, Retrofit retrofit) {
-                final ArrayList<VeDTO> arrlichsu = new ArrayList<VeDTO>();
-                for(int i = 0;i < response.body().size(); i++){
-                    arrlichsu.add(response.body().get(i));
+            interface_getdatve rest = retrofit.create(interface_getdatve.class);
+            Call<List<VeDTO>> call = rest.loadlichsudatve(temp);
+            call.enqueue(new Callback<List<VeDTO>>() {
+                @Override
+                public void onResponse(Response<List<VeDTO>> response, Retrofit retrofit) {
+                    final ArrayList<VeDTO> arrlichsu = new ArrayList<VeDTO>();
+                    for (int i = 0; i < response.body().size(); i++) {
+                        arrlichsu.add(response.body().get(i));
+                    }
+                    ListView lv_lichsu = (ListView) findViewById(R.id.lv_lichsumuave);
+                    final CustomAdapter_HuyDatVe adapter = new CustomAdapter_HuyDatVe(LichSuMuaVe.this, R.layout.customadapter_huydatve, arrlichsu);
+                    lv_lichsu.setAdapter(adapter);
                 }
-                ListView lv_lichsu = (ListView) findViewById(R.id.lv_lichsumuave);
-                final CustomAdapter_HuyDatVe adapter = new CustomAdapter_HuyDatVe(LichSuMuaVe.this,R.layout.customadapter_lichsudatve,arrlichsu);
-                lv_lichsu.setAdapter(adapter);
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
+                @Override
+                public void onFailure(Throwable t) {
 
-            }
-        });
+                }
+            });
+        }else{
+            Toast.makeText(getApplicationContext(),"Bạn chưa đăng nhập!!1",Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 }

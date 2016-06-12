@@ -36,61 +36,10 @@ public class WatchMovieBUS extends YouTubeBaseActivity implements YouTubePlayer.
         setContentView(R.layout.activity_watch_movie);
         Intent callerIntent=getIntent();
         Bundle packageFromCaller= callerIntent.getBundleExtra("myData");
-//        txt_watchTenphim = (TextView) findViewById(R.id.txt_watchTenphim);
-//        iv_like = (ImageView) findViewById(R.id.iv_like);
-//        iv_unlike = (ImageView) findViewById(R.id.iv_unlike);
-//        txt_like = (TextView) findViewById(R.id.txt_like);
-//        txt_unlike = (TextView) findViewById(R.id.txt_unlike);
-//        lv_goiyPhim = (ListView) findViewById(R.id.lv_goiyPhim);
         MovieDTO phim = (MovieDTO) packageFromCaller.getSerializable("maphim");
-//        db = new DatabaseHelper(this);
-//        list_goiyPhim = db.getListPhimGoiY("hd",phim.getMovieId());
         VIDEO_ID = phim.getMovieUrl();
         videoPlayer = (YouTubePlayerView) findViewById(R.id.youtube_player);
         videoPlayer.initialize(API_KEY, this);
-//        txt_watchTenphim.setText(phim.getMovieName());
-//        iv_like.setImageResource(R.drawable.ic_like);
-//        iv_unlike.setImageResource(R.drawable.ic_unlike);
-//        iv_like.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (trangthaiLike == 0) {
-//                    iv_like.setImageResource(R.drawable.ic_clicklike);
-//                    int temp = Integer.parseInt(txt_like.getText().toString());
-//                    temp = temp + 1;
-//                    txt_like.setText(temp + "");
-//                    trangthaiLike = 1;
-//                } else if (trangthaiLike == 1) {
-//                    iv_like.setImageResource(R.drawable.ic_like);
-//                    int temp = Integer.parseInt(txt_like.getText().toString());
-//                    temp = temp - 1;
-//                    txt_like.setText(temp + "");
-//                    trangthaiLike = 0;
-//                }
-//            }
-//        });
-//
-//        iv_unlike.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (trangthaiUnlike == 0) {
-//                    iv_unlike.setImageResource(R.drawable.ic_clickunlike);
-//                    int temp = Integer.parseInt(txt_unlike.getText().toString());
-//                    temp = temp + 1;
-//                    txt_unlike.setText(temp + "");
-//                    trangthaiUnlike = 1;
-//                } else if (trangthaiUnlike == 1) {
-//                    iv_unlike.setImageResource(R.drawable.ic_unlike);
-//                    int temp = Integer.parseInt(txt_unlike.getText().toString());
-//                    temp = temp - 1;
-//                    txt_unlike.setText(temp + "");
-//                    trangthaiUnlike = 0;
-//                }
-//            }
-//        });
-//        RelatedMovieCustomList adapter = new RelatedMovieCustomList(this,R.layout.activity_list_goi_yphim__custom,list_goiyPhim);
-//        lv_goiyPhim.setAdapter(adapter);
-
     }
 
     @Override
@@ -102,6 +51,5 @@ public class WatchMovieBUS extends YouTubeBaseActivity implements YouTubePlayer.
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        //Toast.makeText(MainActivity.this, youTubeInitializationResult.toString(), Toast.LENGTH_LONG).show();
     }
 }

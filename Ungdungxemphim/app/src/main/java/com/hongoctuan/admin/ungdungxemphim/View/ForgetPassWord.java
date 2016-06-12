@@ -36,5 +36,12 @@ public class ForgetPassWord extends AppCompatActivity {
                 finish();
             }
         });
+        Button btn_huy = (Button) findViewById(R.id.btn_forgotHuy);
+        btn_huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
